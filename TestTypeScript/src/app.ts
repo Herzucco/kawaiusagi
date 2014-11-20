@@ -10,10 +10,10 @@ export function Start(){
 
     canvas.width = 500;
     canvas.height = 500;
-
     var camera = new BABYLON.FreeCamera("camera", new BABYLON.Vector3(0, 0, 0), scene);
     var light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 30, 0), scene);
     var sphere : BABYLON.Mesh = BABYLON.Mesh.CreateSphere("sphere", 10, 20, scene);
+
     var box : BABYLON.Mesh = BABYLON.Mesh.CreateBox("boxo", 1, scene);
     box.position = new BABYLON.Vector3(0, -20, 30);
     box.scaling.z = 1000;
@@ -22,7 +22,7 @@ export function Start(){
     camera.attachControl(canvas);
 
     var material : BABYLON.StandardMaterial = new BABYLON.StandardMaterial("materialTest", scene);
-    material.diffuseColor = new BABYLON.Color3(255, 0, 0);
+    material.diffuseColor = new BABYLON.Color3(0, 0, 255);
     material.specularPower = 10;
 
     sphere.material = material;
@@ -65,7 +65,7 @@ export function Start(){
 
     var loader = new BABYLON.AssetsManager(scene);
 
-    var meshTask = loader.addMeshTask("task", "", "./meshs/", "ares.babylon");
+    var meshTask = loader.addMeshTask("task", "", "./meshs/", "prince.babylon");
 
     meshTask.onSuccess =function(task : any) {
         var mesh : BABYLON.Mesh = task.loadedMeshes[0];
