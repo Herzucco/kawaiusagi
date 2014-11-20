@@ -1,11 +1,12 @@
 ﻿///<reference path="../babylon.1.14.d.ts"/>
 import c = require("./game/canvasCreator");
+import u = require("./UI/UI");
 
 export function Start(){
     var lastTimeMsec = null;
 
     var canvas = c.CreateCanvas('scene', 500, 500);
-    var UIcanvas = c.CreateCanvas('UI', 500, 500);
+    var UI = new u.UI();
     var scene : BABYLON.Scene = c.CreateBabylonScene(canvas, 500, 500);
     var engine : BABYLON.Engine = scene.getEngine();
 
@@ -84,11 +85,12 @@ export function Start(){
         //lastTimeMsec	= lastTimeMsec || nowMsec-1000/60;
         //var deltaMsec	= Math.min(200, nowMsec - lastTimeMsec) / 1000;
         //lastTimeMsec	= nowMsec;
-
+        UI.DrawUI();
         scene.render();
     }
 
     engine.runRenderLoop(function() {
+        UI
         render(0);
     });
 }
