@@ -1,15 +1,13 @@
 ﻿///<reference path="../babylon.1.14.d.ts"/>
+import c = require("./game/canvasCreator");
+
 export function Start(){
     var lastTimeMsec = null;
 
-    var canvas = <HTMLCanvasElement>document.getElementById("canvas");
-
-    var engine = new BABYLON.Engine(canvas, true);
-    var scene = new BABYLON.Scene(engine);
-    scene.enablePhysics(new BABYLON.Vector3(0,-100,0), new BABYLON.OimoJSPlugin());
-
-    canvas.width = 500;
-    canvas.height = 500;
+    var canvas = c.CreateCanvas('scene', 500, 500);
+    var scene : BABYLON.Scene = c.CreateBabylonScene(canvas, 500, 500);
+    var engine : BABYLON.Engine = scene.getEngine();
+    
     var camera = new BABYLON.FreeCamera("camera", new BABYLON.Vector3(0, 0, 0), scene);
     var light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 30, 0), scene);
     var sphere : BABYLON.Mesh = BABYLON.Mesh.CreateSphere("sphere", 10, 20, scene);
@@ -18,6 +16,7 @@ export function Start(){
     box.position = new BABYLON.Vector3(0, -20, 30);
     box.scaling.z = 1000;
     box.scaling.x = 100;
+
     sphere.position = new BABYLON.Vector3(0, 0, 60);
     camera.attachControl(canvas);
 
