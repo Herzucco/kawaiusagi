@@ -4,14 +4,15 @@
 ///<reference path="../../babylon.1.14.d.ts"/>
 import g = require("../game/GameObject");
 import inp = require("../inputs/inputs");
+import bo = require("../decor/BasicObstacle");
 
 export class Player extends g.GameObject{
 
-    x : number;
-    y : number;
-    z : number;
-    characterNb : number;
-    radius : number;
+    public x : number;
+    public y : number;
+    public z : number;
+    public characterNb : number;
+    public radius : number;
     startRotationSpeed : number;
     characterRadiusRatio : number;
     rotationDir : number;
@@ -40,6 +41,7 @@ export class Player extends g.GameObject{
         this.sphereMesh  = BABYLON.Mesh.CreateSphere("PlayerSphere", 10, this.radius, scene);
         this.sphereMesh.position = new BABYLON.Vector3(this.x, this.y, this.z);
         this.scene = scene;
+        this.sphereMesh.isVisible = false;
 
 
         // création des princes //
@@ -66,6 +68,7 @@ export class Player extends g.GameObject{
 
     update(deltaTime : number){
         super.update(deltaTime);
+        
         this.rotateSphere();
 
         var i : number;
@@ -86,6 +89,19 @@ export class Player extends g.GameObject{
         this.sphereMesh.rotation.z += this.rotationSpeed * this.rotationDir;
     }
 
+    checkCollisionForMesh(obstacle : bo.BasicObstacle){
+        var i : number;
+        for(i = 0; i < this.characterTable.length; i++){
+            if(obstacle.mesh.intersectsMesh(this.characterTable[i].sphereMesh)){
+                obstacle.destroy();
+                this.lostPrince(i);
+            }
+        }
+    }
+
+    lostPrince(index : number){
+        console.log("prince "+index+" lost");
+    }
 }
 
 class Prince {

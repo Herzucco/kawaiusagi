@@ -7,6 +7,7 @@ import c = require("./canvasCreator");
 import g = require("./GameObject");
 import cam = require("../rendering/camera");
 import p = require("../player/Player");
+import og = require("../decor/ObstaclesGenerator");
 
 export var canvas : HTMLCanvasElement;
 export var scene : BABYLON.Scene;
@@ -24,10 +25,17 @@ export function Start(){
     cam.InitCamera("mainCamera", scene);
     cam.CameraTest(canvas);
 
-    var player = new p.Player(0,0,60,scene);
+    var player = new p.Player(0,0,20,scene);
+
+    og.spawnDistance = 100;
+    og.globalSpeed = 1;
+    og.generateObstacle(player.radius, scene, player);
+    og.generateObstacle(player.radius, scene, player);
 }
 
 function update(deltaTime : number) {
+    scene.render();
+
     var i : number;
 
     g.GarbageObjects();
@@ -35,6 +43,4 @@ function update(deltaTime : number) {
     for(i = 0; i < g.gameObjects.length; i++){
         g.gameObjects[i].update(deltaTime);
     }
-
-    scene.render();
 }
