@@ -6,6 +6,7 @@
 import c = require("./canvasCreator");
 import g = require("./GameObject");
 import cam = require("../rendering/camera");
+import p = require("../player/Player");
 
 export var canvas : HTMLCanvasElement;
 export var scene : BABYLON.Scene;
@@ -22,6 +23,8 @@ export function Start(){
 
     cam.InitCamera("mainCamera", scene);
     cam.CameraTest(canvas);
+
+    var player = new p.Player(0,0,60,scene);
 }
 
 function update(deltaTime : number) {

@@ -10,9 +10,11 @@ export function GarbageObjects(){
     var i : number;
 
     for(i = 0; i < gameObjects.length; i++){
-        delete gameObjects[i];
-        gameObjects.splice(i, 1);
-        i--;
+        if(gameObjects[i].destroyed){
+            delete gameObjects[i];
+            gameObjects.splice(i, 1);
+            i--;
+        }
     }
 }
 
