@@ -2175,6 +2175,7 @@ declare module BABYLON {
         public _physicRestitution: number;
         public ellipsoid: Vector3;
         public ellipsoidOffset: Vector3;
+        public jumpAnimationVector : Vector3;
         private _collider;
         private _oldPositionForCollisions;
         private _diffPositionForCollisions;

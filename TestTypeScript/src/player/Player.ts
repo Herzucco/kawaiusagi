@@ -3,6 +3,8 @@
  */
 ///<reference path="../../babylon.1.14.d.ts"/>
 import g = require("../game/GameObject");
+import inp = require("../inputs/inputs");
+
 export class Player extends g.GameObject{
 
     x : number;
@@ -37,6 +39,7 @@ export class Player extends g.GameObject{
         // création du mesh Sphere //
         this.sphereMesh  = BABYLON.Mesh.CreateSphere("PlayerSphere", 10, this.radius, scene);
         this.sphereMesh.position = new BABYLON.Vector3(this.x, this.y, this.z);
+        this.scene = scene;
 
 
         // création des princes //
@@ -64,6 +67,19 @@ export class Player extends g.GameObject{
     update(deltaTime : number){
         super.update(deltaTime);
         this.rotateSphere();
+
+        var i : number;
+        for(i = 0; i < this.characterTable.length; i++)
+        {
+            this.characterTable[i].mesh.setPositionWithLocalVector(this.characterTable[i].mesh.jumpAnimationVector);
+        }
+
+        if(inp.inputs["A"]){
+            for(i = 0; i < this.characterTable.length; i++)
+            {
+                this.scene.beginAnimation(this.characterTable[i].mesh, 0, 25, false);
+            }
+        }
     }
 
     rotateSphere() {
@@ -81,6 +97,7 @@ class Prince {
     color : string;
     sphereMesh : BABYLON.Mesh;
     characterRatio : number;
+    mesh : BABYLON.Mesh;
 
     constructor(x : number, y : number, z :number, color : string, characterRatio : number, sphereMesh : BABYLON.Mesh, scene : BABYLON.Scene) {
 
@@ -93,10 +110,35 @@ class Prince {
 
        // var princeMesh : BABYLON.Mesh  = BABYLON.Mesh.CreateSphere("PrinceSphere", 10, this.characterRadius , scene);
         var princeMesh : BABYLON.Mesh  = BABYLON.Mesh.CreateBox("box", this.characterRatio, scene);
-        princeMesh.rotation.z =/* Math.PI/2 -*/ (Math.atan2(this.y - this.sphereMesh.position.y, this.x - this.sphereMesh.position.x));
+        princeMesh.rotation.z = (Math.atan2(this.y - this.sphereMesh.position.y, this.x - this.sphereMesh.position.x));
         princeMesh.parent = this.sphereMesh;
         princeMesh.position = new BABYLON.Vector3(this.x,this.y, this.z);
-        
+
+        princeMesh.jumpAnimationVector = new BABYLON.Vector3(0, 3, 0);
+
+        var animationBox = new BABYLON.Animation("anim", "jumpAnimationVector", 60, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);
+
+        var keys = [];
+        keys.push({
+            frame: 0,
+            value: new BABYLON.Vector3(0, 3, 0)
+        },{
+            frame: 10,
+            value: new BABYLON.Vector3(0, 4.5, 0)
+        },{
+            frame: 15,
+            value: new BABYLON.Vector3(0, 5, 0)
+        },{
+            frame: 25,
+            value: new BABYLON.Vector3(0, 3, 0)
+        });
+
+        animationBox.setKeys(keys);
+        princeMesh.animations.push(animationBox);
+
+        this.mesh = princeMesh;
+
+        this.mesh.actionManager = new BABYLON.ActionManager(scene);
     }
 
 }
