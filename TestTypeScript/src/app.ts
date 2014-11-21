@@ -1,7 +1,8 @@
 ﻿///<reference path="../babylon.1.14.d.ts"/>
+import p = require("./player/Player");
+
 export function Start(){
     var lastTimeMsec = null;
-
     var canvas = <HTMLCanvasElement>document.getElementById("canvas");
 
     var engine = new BABYLON.Engine(canvas, true);
@@ -13,20 +14,22 @@ export function Start(){
 
     var camera = new BABYLON.FreeCamera("camera", new BABYLON.Vector3(0, 0, 0), scene);
     var light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 30, 0), scene);
-    var sphere : BABYLON.Mesh = BABYLON.Mesh.CreateSphere("sphere", 10, 20, scene);
+    //var sphere : BABYLON.Mesh = BABYLON.Mesh.CreateSphere("sphere", 10, 20, scene);
     var box : BABYLON.Mesh = BABYLON.Mesh.CreateBox("boxo", 1, scene);
+
+    var player = new p.Player(0,0,60,scene);
     box.position = new BABYLON.Vector3(0, -20, 30);
     box.scaling.z = 1000;
     box.scaling.x = 100;
-    sphere.position = new BABYLON.Vector3(0, 0, 60);
+   // sphere.position = new BABYLON.Vector3(0, 0, 60);
     camera.attachControl(canvas);
 
     var material : BABYLON.StandardMaterial = new BABYLON.StandardMaterial("materialTest", scene);
-    material.diffuseColor = new BABYLON.Color3(255, 0, 0);
+    material.diffuseColor = new BABYLON.Color3(0, 255, 0);
     material.specularPower = 10;
 
-    sphere.material = material;
-    sphere.setPhysicsState({impostor:BABYLON.PhysicsEngine.SphereImpostor, move:true, mass:100, friction:0.5, restitution:0.99});
+   // sphere.material = material;
+    //sphere.setPhysicsState({impostor:BABYLON.PhysicsEngine.SphereImpostor, move:true, mass:100, friction:0.5, restitution:0.99});
     box.setPhysicsState({impostor:BABYLON.PhysicsEngine.BoxImpostor, move:false, friction:0.9});
     //sphere.applyImpulse(new BABYLON.Vector3(0, -200, 1000), new BABYLON.Vector3(0, 0, 0));
 
