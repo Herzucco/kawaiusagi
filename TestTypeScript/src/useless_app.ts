@@ -17,6 +17,7 @@ export function Start(){
     box.scaling.z = 1000;
     box.scaling.x = 100;
 
+
     sphere.position = new BABYLON.Vector3(0, 0, 60);
     camera.attachControl(canvas);
 
