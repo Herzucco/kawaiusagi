@@ -96,7 +96,7 @@ class Prince {
         princeMesh.rotation.z =/* Math.PI/2 -*/ (Math.atan2(this.y - this.sphereMesh.position.y, this.x - this.sphereMesh.position.x));
         princeMesh.parent = this.sphereMesh;
         princeMesh.position = new BABYLON.Vector3(this.x,this.y, this.z);
-        princeMesh.setPositionWithLocalVector(new BABYLON.Vector3(0,3,0));
+        
     }
 
 }
