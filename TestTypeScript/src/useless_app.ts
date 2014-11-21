@@ -1,13 +1,15 @@
 ﻿///<reference path="../babylon.1.14.d.ts"/>
 import c = require("./game/canvasCreator");
+import u = require("./UI/UI");
 
 export function Start(){
     var lastTimeMsec = null;
 
     var canvas = c.CreateCanvas('scene', 500, 500);
+    var UI = new u.UI();
     var scene : BABYLON.Scene = c.CreateBabylonScene(canvas, 500, 500);
     var engine : BABYLON.Engine = scene.getEngine();
-    
+
     var camera = new BABYLON.FreeCamera("camera", new BABYLON.Vector3(0, 0, 0), scene);
     var light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 30, 0), scene);
     var sphere : BABYLON.Mesh = BABYLON.Mesh.CreateSphere("sphere", 10, 20, scene);
@@ -65,7 +67,7 @@ export function Start(){
 
     var loader = new BABYLON.AssetsManager(scene);
 
-    var meshTask = loader.addMeshTask("task", "", "./meshs/", "prince.babylon");
+    var meshTask = loader.addMeshTask("task", "", "./meshs/", "Rabbit.babylon");
 
     meshTask.onSuccess =function(task : any) {
         var mesh : BABYLON.Mesh = task.loadedMeshes[0];
@@ -84,11 +86,12 @@ export function Start(){
         //lastTimeMsec	= lastTimeMsec || nowMsec-1000/60;
         //var deltaMsec	= Math.min(200, nowMsec - lastTimeMsec) / 1000;
         //lastTimeMsec	= nowMsec;
-
+        UI.DrawUI();
         scene.render();
     }
 
     engine.runRenderLoop(function() {
+        UI
         render(0);
     });
 }
