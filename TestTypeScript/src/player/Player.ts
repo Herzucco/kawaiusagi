@@ -32,7 +32,7 @@ export class Player extends g.GameObject{
         this.startRotationSpeed = 0.01;
         this.rotationSpeed = this.startRotationSpeed;
         this.characterRadiusRatio = 5;
-        this.characterNb = 5;
+        this.characterNb = 7;
         this.characterTable = [];
 
         // création du mesh Sphere //
@@ -51,14 +51,14 @@ export class Player extends g.GameObject{
             var posX : number = Math.sin(angle) * (this.radius/2 + (this.radius/this.characterRadiusRatio)*0.5) - this.x;
             var posY : number = Math.cos(angle) * (this.radius/2 + (this.radius/this.characterRadiusRatio)*0.5) - this.y;
             var posZ : number = 0;
-            var characterRadius = this.radius/this.characterRadiusRatio;
+            var characterRatio = this.radius/this.characterRadiusRatio;
             var color : string;
             if(i%2 == 0)
                 color = "BLUE";
             else
                 color = "RED";
 
-            var prince = new Prince(posX, posY, posZ, color, characterRadius, this.sphereMesh, scene);
+            var prince = new Prince(posX, posY, posZ, color, characterRatio, this.sphereMesh, scene);
 
             this.characterTable.push(prince);
         }
@@ -96,22 +96,23 @@ class Prince {
     scene : BABYLON.Scene;
     color : string;
     sphereMesh : BABYLON.Mesh;
-    characterRadius : number;
+    characterRatio : number;
 
-    constructor(x : number, y : number, z :number, color : string, characterRadius : number, sphereMesh : BABYLON.Mesh, scene : BABYLON.Scene) {
+    constructor(x : number, y : number, z :number, color : string, characterRatio : number, sphereMesh : BABYLON.Mesh, scene : BABYLON.Scene) {
 
         this.x = x;
         this.y = y;
         this.z = z;
         this.color = color;
         this.sphereMesh = sphereMesh;
-        this.characterRadius = characterRadius;
+        this.characterRatio = characterRatio;
 
-
-        var princeMesh : BABYLON.Mesh  = BABYLON.Mesh.CreateSphere("PrinceSphere", 10, this.characterRadius , scene);
-
+       // var princeMesh : BABYLON.Mesh  = BABYLON.Mesh.CreateSphere("PrinceSphere", 10, this.characterRadius , scene);
+        var princeMesh : BABYLON.Mesh  = BABYLON.Mesh.CreateBox("box", this.characterRatio, scene);
+        princeMesh.rotation.z =/* Math.PI/2 -*/ (Math.atan2(this.y - this.sphereMesh.position.y, this.x - this.sphereMesh.position.x));
         princeMesh.parent = this.sphereMesh;
         princeMesh.position = new BABYLON.Vector3(this.x,this.y, this.z);
+        
     }
 
 }
