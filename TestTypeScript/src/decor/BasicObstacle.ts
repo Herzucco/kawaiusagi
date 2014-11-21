@@ -7,7 +7,7 @@ import g = require("../game/GameObject");
 import p = require("../player/Player");
 
 export class BasicObstacle extends g.GameObject{
-    mesh : BABYLON.Mesh;
+    public mesh : BABYLON.Mesh;
     speed : number;
     player : p.Player;
 
@@ -16,12 +16,18 @@ export class BasicObstacle extends g.GameObject{
 
         this.mesh = BABYLON.Mesh.CreateBox(name, size, scene);
         this.speed = speed;
+        this.player = player;
     }
 
     update(deltaTime : number){
         super.update(deltaTime);
 
         this.mesh.position.z -= this.speed * deltaTime;
-        //this.player.checkCollisionForMesh(this.mesh);
+        this.player.checkCollisionForMesh(this);
+    }
+
+    destroy(){
+        this.mesh.dispose(false);
+        super.destroy();
     }
 }
