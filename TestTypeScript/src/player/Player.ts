@@ -2,7 +2,8 @@
  * Created by BreizhPanda on 20/11/2014.
  */
 ///<reference path="../../babylon.1.14.d.ts"/>
-export class Player{
+import g = require("../game/GameObject");
+export class Player extends g.GameObject{
 
     x : number;
     y : number;
@@ -19,6 +20,8 @@ export class Player{
     sphereMesh : BABYLON.Mesh;
 
     constructor(x : number, y : number, z :number, scene : BABYLON.Scene) {
+        super();
+
         this.x = x;
         this.y = y;
         this.z = z;
@@ -54,9 +57,9 @@ export class Player{
         }
     }
 
-    update(){
+    update(deltaTime : number){
+        super.update(deltaTime);
         this.rotateSphere();
-
     }
 
     rotateSphere() {
