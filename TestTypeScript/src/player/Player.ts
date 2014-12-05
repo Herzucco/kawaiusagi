@@ -71,7 +71,9 @@ export class Player extends g.GameObject{
         var i : number;
         for(i = 0; i < this.characterTable.length; i++)
         {
-            this.characterTable[i].mesh.setPositionWithLocalVector(this.characterTable[i].mesh.jumpAnimationVector);
+            if(this.characterTable[i].mesh != null){
+                this.characterTable[i].mesh.setPositionWithLocalVector(this.characterTable[i].mesh.jumpAnimationVector);
+            }
         }
 
         if(inp.inputs["A"]){
@@ -104,14 +106,16 @@ export class Player extends g.GameObject{
         var i : number;
         if(this.invincibility == false)
         {
-        for(i = 0; i < this.characterTable.length; i++) {
-            if (obstacle.mesh.intersectsMesh(this.characterTable[i].mesh)) {
-                obstacle.destroy();
-                this.invincibility = true;
-                this.timer = this.invincibilityTime;
-                this.destroyPrinces(i);
+            for(i = 0; i < this.characterTable.length; i++) {
+                if(this.characterTable[i].mesh != null){
+                    if (obstacle.mesh.intersectsMesh(this.characterTable[i].mesh)) {
+                        obstacle.destroy();
+                        this.invincibility = true;
+                        this.timer = this.invincibilityTime;
+                        this.destroyPrinces(i);
+                    }
+                }
             }
-        }
         }
     }
 
@@ -196,6 +200,18 @@ class Prince {
 
     constructor(x : number, y : number, z :number, color : string, characterRatio : number, sphereMesh : BABYLON.Mesh, scene : BABYLON.Scene) {
 
+        var loader = new BABYLON.AssetsManager(scene);
+
+        if(color === "BLUE"){
+            var meshTask = loader.addMeshTask("task", "", "./meshs/", "Rabbit.babylon");
+        }else{
+            var meshTask = loader.addMeshTask("task", "", "./meshs/", "Rabbit.babylon");
+        }
+
+        meshTask.onSuccess = this.positionningMesh.bind(this);
+
+        loader.load();
+
         this.x = x;
         this.y = y;
         this.z = z;
@@ -203,24 +219,18 @@ class Prince {
         this.sphereMesh = sphereMesh;
         this.characterRatio = characterRatio;
         this.isJumping = false;
-
+        this.scene = scene;
        // var princeMesh : BABYLON.Mesh  = BABYLON.Mesh.CreateSphere("PrinceSphere", 10, this.characterRadius , scene);
-        var princeMesh : BABYLON.Mesh  = BABYLON.Mesh.CreateBox("box", this.characterRatio, scene);
-        princeMesh.rotation.z = (Math.atan2(this.y - this.sphereMesh.position.y, this.x - this.sphereMesh.position.x));
-        princeMesh.parent = this.sphereMesh;
-        princeMesh.position = new BABYLON.Vector3(this.x,this.y, this.z);
+    }
 
-        var princeMaterial = new BABYLON.StandardMaterial("prince material", scene);
-        switch (this.color){
-            case "BLUE" :
-                princeMaterial.diffuseColor = new BABYLON.Color3(0,0,1);
-                break;
-            case "RED" :
-                princeMaterial.diffuseColor = new BABYLON.Color3(1,0,0);
-                break;
-        }
-        princeMesh.material = princeMaterial;
-        princeMesh.jumpAnimationVector = new BABYLON.Vector3(0, 3, 0);
+    positionningMesh(task : any){
+        var mesh : BABYLON.Mesh = task.loadedMeshes[0];
+        mesh.scaling = new BABYLON.Vector3(0.05, 0.05, 0.05);
+        mesh.rotation.z = (Math.atan2(this.y - this.sphereMesh.position.y, this.x - this.sphereMesh.position.x));
+        mesh.parent = this.sphereMesh;
+        mesh.position = new BABYLON.Vector3(this.x,this.y, this.z);
+
+        mesh.jumpAnimationVector = new BABYLON.Vector3(0, 3, 0);
 
         var animationBox = new BABYLON.Animation("anim", "jumpAnimationVector", 60, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);
 
@@ -240,11 +250,11 @@ class Prince {
         });
 
         animationBox.setKeys(keys);
-        princeMesh.animations.push(animationBox);
+        mesh.animations.push(animationBox);
 
-        this.mesh = princeMesh;
+        this.mesh = mesh;
 
-        this.mesh.actionManager = new BABYLON.ActionManager(scene);
+        this.mesh.actionManager = new BABYLON.ActionManager(this.scene);
     }
 
     endJump(){
