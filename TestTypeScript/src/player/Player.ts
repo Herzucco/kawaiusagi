@@ -203,9 +203,9 @@ class Prince {
         var loader = new BABYLON.AssetsManager(scene);
 
         if(color === "BLUE"){
-            var meshTask = loader.addMeshTask("task", "", "./meshs/", "Rabbit.babylon");
+            var meshTask = loader.addMeshTask("task", "", "./meshs/", "Pingouin.babylon");
         }else{
-            var meshTask = loader.addMeshTask("task", "", "./meshs/", "Rabbit.babylon");
+            var meshTask = loader.addMeshTask("task", "", "./meshs/", "Pingouin.babylon");
         }
 
         meshTask.onSuccess = this.positionningMesh.bind(this);
@@ -225,7 +225,7 @@ class Prince {
 
     positionningMesh(task : any){
         var mesh : BABYLON.Mesh = task.loadedMeshes[0];
-        mesh.scaling = new BABYLON.Vector3(0.05, 0.05, 0.05);
+        mesh.scaling = new BABYLON.Vector3(0.5, 0.5, 0.5);
         mesh.rotation.z = (Math.atan2(this.y - this.sphereMesh.position.y, this.x - this.sphereMesh.position.x));
         mesh.parent = this.sphereMesh;
         mesh.position = new BABYLON.Vector3(this.x,this.y, this.z);
