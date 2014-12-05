@@ -17,8 +17,10 @@ export class Player extends g.GameObject{
     characterRadiusRatio : number;
     rotationDir : number;
     rotationSpeed : number;
-    characterTable : Prince[];
-
+    public characterTable : Prince[];
+    invincibility : boolean;
+    invincibilityTime : number;
+    timer : number;
     scene : BABYLON.Scene;
     sphereMesh : BABYLON.Mesh;
 
@@ -28,7 +30,7 @@ export class Player extends g.GameObject{
         this.x = x;
         this.y = y;
         this.z = z;
-
+        this.invincibilityTime = 3;
         this.radius = 5;
         this.rotationDir = 1; // 1 : sens anti-horaire, -1 : sens horaire
         this.startRotationSpeed = 0.01;
@@ -36,7 +38,8 @@ export class Player extends g.GameObject{
         this.characterRadiusRatio = 5;
         this.characterNb = 7;
         this.characterTable = [];
-
+        this.invincibility = false;
+        this.timer = 0;
 
         // création du mesh Sphere //
         this.sphereMesh  = BABYLON.Mesh.CreateSphere("PlayerSphere", 10, this.radius, scene);
@@ -44,33 +47,19 @@ export class Player extends g.GameObject{
         this.scene = scene;
         //this.sphereMesh.isVisible = false;
 
+        this.createPrinces();
 
-        // création des princes //
-        for(i=1; i<=this.characterNb; i++)
-        {
-            var i : number;
-            var progress : number = i/this.characterNb;
-            var angle : number = progress * Math.PI * 2;
-            var posX : number = Math.sin(angle) * (this.radius/2 + (this.radius/this.characterRadiusRatio)*0.5) - this.x;
-            var posY : number = Math.cos(angle) * (this.radius/2 + (this.radius/this.characterRadiusRatio)*0.5) - this.y;
-            var posZ : number = 0;
-            var characterRatio = this.radius/this.characterRadiusRatio;
-            var color : string;
-            if(i%2 == 0)
-                color = "BLUE";
-            else
-                color = "RED";
-
-            var prince = new Prince(posX, posY, posZ, color, characterRatio, this.sphereMesh, scene);
-
-            this.characterTable.push(prince);
-        }
     }
 
     update(deltaTime : number){
         super.update(deltaTime);
-
+        console.log(this.invincibility);
         this.rotateSphere();
+
+        if(this.invincibility == true)
+        {
+            this.invincibilityTimerCheck();
+        }
 
         var i : number;
         for(i = 0; i < this.characterTable.length; i++)
@@ -106,17 +95,71 @@ export class Player extends g.GameObject{
 
     checkCollisionForMesh(obstacle : bo.BasicObstacle){
         var i : number;
-        for(i = 0; i < this.characterTable.length; i++){
-            if(obstacle.mesh.intersectsMesh(this.characterTable[i].sphereMesh)){
+        if(this.invincibility == false)
+        {
+        for(i = 0; i < this.characterTable.length; i++) {
+            if (obstacle.mesh.intersectsMesh(this.characterTable[i].mesh)) {
                 obstacle.destroy();
-                this.lostPrince(i);
+                this.invincibility = true;
+                this.timer = this.invincibilityTime*60;
+                this.destroyPrinces(i);
             }
+        }
         }
     }
 
-    lostPrince(index : number){
-        console.log("prince "+index+" lost");
+    destroyPrinces(index : number){
+        var i : number;
+        for(i = 0; i < this.characterTable.length; i++) { // je détruit tous les princes et les splite du tableau
+            this.characterTable[i].mesh.dispose();
+            this.characterTable.splice(i,1);
+            i--;
+        }
+
+        this.characterNb -= 1;      // je décrémente la variable character Number
+
+        this.createPrinces();
+
     }
+
+    createPrinces(){
+
+
+        // création des princes //
+        for(i=1; i<=this.characterNb; i++)  // On va répartir les princes équitablement autour de la sphere en fonction de leur nombre
+        {
+            var i : number;
+            var progress : number = i/this.characterNb;
+            var angle : number = progress * Math.PI * 2;
+            var posX : number = Math.sin(angle) * (this.radius/2 + (this.radius/this.characterRadiusRatio)*0.5) - this.x;
+            var posY : number = Math.cos(angle) * (this.radius/2 + (this.radius/this.characterRadiusRatio)*0.5) - this.y;
+            var posZ : number = 0;
+            var characterRatio = this.radius/this.characterRadiusRatio;
+            var color : string;
+            if(i%2 == 0)
+                color = "BLUE";
+            else
+                color = "RED";
+
+            var prince = new Prince(posX, posY, posZ, color, characterRatio, this.sphereMesh, this.scene);
+
+            this.characterTable.push(prince);
+        }
+
+    }
+
+    invincibilityTimerCheck(){
+
+        if(this.timer > 0)
+        {
+            this.timer --;
+        }
+        else{
+            this.invincibility = false;
+        }
+    }
+
+
 }
 
 class Prince {
@@ -175,9 +218,9 @@ class Prince {
     }
 
     endJump(){
-        console.log(this.isJumping);
+
         this.isJumping = false;
-        console.log(this.isJumping);
+
     }
 
 }
