@@ -8,10 +8,12 @@ import g = require("./GameObject");
 import cam = require("../rendering/camera");
 import p = require("../player/Player");
 import og = require("../decor/ObstaclesGenerator");
+import u = require("../UI/UI");
 
 export var canvas : HTMLCanvasElement;
 export var scene : BABYLON.Scene;
 export var engine : BABYLON.Engine;
+export var UI : UI;
 
 export function Start(){
     canvas = c.CreateCanvas('scene', 500, 500);
@@ -24,7 +26,7 @@ export function Start(){
 
     cam.InitCamera("mainCamera", scene);
     cam.CameraTest(canvas);
-
+    UI = new u.UI(canvas.width,canvas.height);
     var player = new p.Player(0,0,20,scene);
 
     og.spawnDistance = 100;
@@ -35,7 +37,7 @@ export function Start(){
 
 function update(deltaTime : number) {
     scene.render();
-
+    UI.DrawUI();
     var i : number;
 
     g.GarbageObjects();
