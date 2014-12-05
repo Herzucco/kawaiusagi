@@ -6,6 +6,7 @@
 export var gameObjects : Array<GameObject>;
 gameObjects = new Array<GameObject>();
 
+
 export function GarbageObjects(){
     var i : number;
 

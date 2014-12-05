@@ -17,6 +17,7 @@ export function CreateBabylonScene(canvas : HTMLCanvasElement, x : number, y : n
     var scene = new BABYLON.Scene(engine);
 
     canvas.width = 500;
+
     canvas.height = 500;
 
     return scene;
