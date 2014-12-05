@@ -9,6 +9,7 @@ export function InitCamera(name : string, scene : BABYLON.Scene){
     camera = new BABYLON.FreeCamera(name, new BABYLON.Vector3(0, 5, 0), scene);
 }
 
+
 export function CameraTest(canvas : HTMLCanvasElement){
     camera.attachControl(canvas);
 }

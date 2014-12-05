@@ -37,11 +37,12 @@ export class Player extends g.GameObject{
         this.characterNb = 7;
         this.characterTable = [];
 
+
         // création du mesh Sphere //
         this.sphereMesh  = BABYLON.Mesh.CreateSphere("PlayerSphere", 10, this.radius, scene);
         this.sphereMesh.position = new BABYLON.Vector3(this.x, this.y, this.z);
         this.scene = scene;
-        this.sphereMesh.isVisible = false;
+        //this.sphereMesh.isVisible = false;
 
 
         // création des princes //
@@ -68,7 +69,7 @@ export class Player extends g.GameObject{
 
     update(deltaTime : number){
         super.update(deltaTime);
-        
+
         this.rotateSphere();
 
         var i : number;
@@ -80,7 +81,21 @@ export class Player extends g.GameObject{
         if(inp.inputs["A"]){
             for(i = 0; i < this.characterTable.length; i++)
             {
-                this.scene.beginAnimation(this.characterTable[i].mesh, 0, 25, false);
+                if(this.characterTable[i].color == "BLUE" && this.characterTable[i].isJumping == false)
+                {
+                    this.scene.beginAnimation(this.characterTable[i].mesh, 0, 25, false, 1, this.characterTable[i].endJump.bind(this.characterTable[i]));
+                    this.characterTable[i].isJumping = true;
+                }
+            }
+        }
+        if(inp.inputs["Z"]){
+            for(i = 0; i < this.characterTable.length; i++)
+            {
+                if(this.characterTable[i].color == "RED" && this.characterTable[i].isJumping == false)
+                {
+                    this.scene.beginAnimation(this.characterTable[i].mesh, 0, 25, false, 1, this.characterTable[i].endJump.bind(this.characterTable[i]));
+                    this.characterTable[i].isJumping = true;
+                }
             }
         }
     }
@@ -114,6 +129,7 @@ class Prince {
     sphereMesh : BABYLON.Mesh;
     characterRatio : number;
     mesh : BABYLON.Mesh;
+    isJumping : boolean;
 
     constructor(x : number, y : number, z :number, color : string, characterRatio : number, sphereMesh : BABYLON.Mesh, scene : BABYLON.Scene) {
 
@@ -123,6 +139,7 @@ class Prince {
         this.color = color;
         this.sphereMesh = sphereMesh;
         this.characterRatio = characterRatio;
+        this.isJumping = false;
 
        // var princeMesh : BABYLON.Mesh  = BABYLON.Mesh.CreateSphere("PrinceSphere", 10, this.characterRadius , scene);
         var princeMesh : BABYLON.Mesh  = BABYLON.Mesh.CreateBox("box", this.characterRatio, scene);
@@ -155,6 +172,12 @@ class Prince {
         this.mesh = princeMesh;
 
         this.mesh.actionManager = new BABYLON.ActionManager(scene);
+    }
+
+    endJump(){
+        console.log(this.isJumping);
+        this.isJumping = false;
+        console.log(this.isJumping);
     }
 
 }

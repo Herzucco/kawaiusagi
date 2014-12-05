@@ -5,14 +5,38 @@
 import bo = require("./BasicObstacle");
 import p = require("../player/Player");
 
+
 export var spawnDistance : number;
 export var globalSpeed : number;
+export var decreaseFactor : number;
+
+var scene : BABYLON.Scene;
+var player : p.Player;
+var frequency : number;
+var time : number = 0;
 
 export function generateObstacle(radius : number, scene : BABYLON.Scene, player : p.Player){
     var angle : number = Math.random() * 10 * Math.PI * 2;
     var posX : number = Math.sin(angle) * radius/2;
     var posY : number = Math.cos(angle) * radius/2;
 
-    var b : bo.BasicObstacle = new bo.BasicObstacle("bo", 1, scene, globalSpeed, player);
+    var b : bo.BasicObstacle = new bo.BasicObstacle(""+angle+"", 1, scene, globalSpeed, player);
     b.mesh.position = new BABYLON.Vector3(posX, posY, spawnDistance);
+}
+
+export function launch(f : number, p : p.Player, s : BABYLON.Scene){
+    frequency = f;
+    player = p;
+    scene = s;
+}
+
+export function update(deltaTime : number){
+    time += deltaTime/10;
+
+    frequency -= decreaseFactor * (deltaTime / 10);
+    globalSpeed += decreaseFactor * (deltaTime / 10);
+    if(time >= frequency){
+        time = 0;
+        generateObstacle(player.radius, scene, player);
+    }
 }
