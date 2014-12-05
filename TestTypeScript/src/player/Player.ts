@@ -170,7 +170,7 @@ export class Player extends g.GameObject{
         {
             var i : number;
             for(i = 0; i < this.characterTable.length; i++) {
-                this.characterTable[i].mesh.isVisible = !this.characterTable[i].mesh.visibility;
+                this.characterTable[i].mesh.isVisible = !this.characterTable[i].mesh.isVisible;
             }
             this.fadingTimer = 0;
         }
