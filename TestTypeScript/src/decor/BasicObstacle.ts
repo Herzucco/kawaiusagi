@@ -13,8 +13,8 @@ export class BasicObstacle extends g.GameObject{
     player : p.Player;
     scene : BABYLON.Scene;
     line : BABYLON.LinesMesh;
-
-    constructor(name : string, size : number, scene : BABYLON.Scene, speed : number, player : p.Player){
+    type : string;
+    constructor(name : string, size : number, scene : BABYLON.Scene, speed : number, player : p.Player, type : string){
         super();
 
 
@@ -22,7 +22,18 @@ export class BasicObstacle extends g.GameObject{
         this.speed = speed;
         this.player = player;
         this.scene = scene;
+        this.type = type;
 
+        var obstacleMaterial = new BABYLON.StandardMaterial("prince material", scene);
+        switch (this.type){
+            case "OBSTACLE" :
+                obstacleMaterial.diffuseColor = new BABYLON.Color3(0,0,0);
+                break;
+            case "COLLECTIBLE" :
+                obstacleMaterial.diffuseColor = new BABYLON.Color3(1,1,0);
+                break;
+        }
+        this.mesh.material = obstacleMaterial;
 
     }
 
@@ -30,7 +41,18 @@ export class BasicObstacle extends g.GameObject{
         super.update(deltaTime);
 
         this.mesh.position.z -= this.speed * deltaTime;
-        this.player.checkCollisionForMesh(this);
+        switch (this.type){
+            case "OBSTACLE" :
+                this.player.checkCollisionForMesh(this);
+                break;
+            case "COLLECTIBLE" :
+                this.player.checkCollectibleCatch(this);
+                break;
+        }
+
+
+
+
 
         if(this.line == null){
             this.line = BABYLON.Mesh.CreateLines("lines", [

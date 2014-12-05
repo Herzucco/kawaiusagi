@@ -6,6 +6,7 @@ import g = require("../game/GameObject");
 import inp = require("../inputs/inputs");
 import bo = require("../decor/BasicObstacle");
 
+
 export class Player extends g.GameObject{
 
     public x : number;
@@ -104,14 +105,28 @@ export class Player extends g.GameObject{
         var i : number;
         if(this.invincibility == false)
         {
-        for(i = 0; i < this.characterTable.length; i++) {
-            if (obstacle.mesh.intersectsMesh(this.characterTable[i].mesh)) {
+            for(i = 0; i < this.characterTable.length; i++) {
+                if (obstacle.mesh.intersectsMesh(this.characterTable[i].mesh)) {
                 obstacle.destroy();
                 this.invincibility = true;
                 this.timer = this.invincibilityTime;
                 this.destroyPrinces(i);
-            }
+                 }
+             }
         }
+    }
+
+    checkCollectibleCatch(obstacle : bo.BasicObstacle){
+        var i : number;
+        if(this.invincibility == false)
+        {
+            for(i = 0; i < this.characterTable.length; i++) {
+                if (obstacle.mesh.intersectsMesh(this.characterTable[i].mesh)) {
+                    obstacle.destroy();
+                    ////// score += 1
+
+                }
+            }
         }
     }
 

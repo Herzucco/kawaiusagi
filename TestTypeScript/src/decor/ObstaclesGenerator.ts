@@ -14,13 +14,15 @@ var scene : BABYLON.Scene;
 var player : p.Player;
 var frequency : number;
 var time : number = 0;
+var collectibleFrequency : number = 3;
+var type : string = "";
 
-export function generateObstacle(radius : number, scene : BABYLON.Scene, player : p.Player){
+export function generateObstacle(radius : number, scene : BABYLON.Scene, player : p.Player, type : string){
     var angle : number = Math.random() * 10 * Math.PI * 2;
     var posX : number = Math.sin(angle) * radius/2;
     var posY : number = Math.cos(angle) * radius/2;
 
-    var b : bo.BasicObstacle = new bo.BasicObstacle(""+angle+"", 1, scene, globalSpeed, player);
+    var b : bo.BasicObstacle = new bo.BasicObstacle(""+angle+"", 1, scene, globalSpeed, player, type);
     b.mesh.position = new BABYLON.Vector3(posX, posY, spawnDistance);
 }
 
@@ -37,6 +39,15 @@ export function update(deltaTime : number){
     globalSpeed += decreaseFactor * (deltaTime / 10);
     if(time >= frequency){
         time = 0;
-        generateObstacle(player.radius, scene, player);
+        var whichObstacle = Math.random()*10;
+        if(whichObstacle > collectibleFrequency)
+        {
+            type = "OBSTACLE"
+        }
+        else
+        {
+            type = "COLLECTIBLE";
+        }
+        generateObstacle(player.radius, scene, player, type);
     }
 }
