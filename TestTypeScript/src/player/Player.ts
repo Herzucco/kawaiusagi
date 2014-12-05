@@ -58,11 +58,11 @@ export class Player extends g.GameObject{
         this.createPrinces();
 
     }
-    
+
 
     update(deltaTime : number){
         super.update(deltaTime);
-        console.log(this.invincibility);
+        
         this.rotateSphere();
 
         if(this.invincibility == true)
@@ -209,6 +209,7 @@ class Prince {
     characterRatio : number;
     mesh : BABYLON.Mesh;
     isJumping : boolean;
+    public jumpHeight : number;
 
     constructor(x : number, y : number, z :number, color : string, characterRatio : number, sphereMesh : BABYLON.Mesh, scene : BABYLON.Scene) {
 
@@ -219,6 +220,7 @@ class Prince {
         this.sphereMesh = sphereMesh;
         this.characterRatio = characterRatio;
         this.isJumping = false;
+        this.jumpHeight = 7;
 
        // var princeMesh : BABYLON.Mesh  = BABYLON.Mesh.CreateSphere("PrinceSphere", 10, this.characterRadius , scene);
         var princeMesh : BABYLON.Mesh  = BABYLON.Mesh.CreateBox("box", this.characterRatio, scene);
@@ -246,10 +248,10 @@ class Prince {
             value: new BABYLON.Vector3(0, 3, 0)
         },{
             frame: 10,
-            value: new BABYLON.Vector3(0, 4.5, 0)
+            value: new BABYLON.Vector3(0, this.jumpHeight-1, 0)
         },{
             frame: 15,
-            value: new BABYLON.Vector3(0, 5, 0)
+            value: new BABYLON.Vector3(0, this.jumpHeight, 0)
         },{
             frame: 25,
             value: new BABYLON.Vector3(0, 3, 0)
