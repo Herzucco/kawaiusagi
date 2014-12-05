@@ -58,6 +58,7 @@ export class Player extends g.GameObject{
         this.createPrinces();
 
     }
+    
 
     update(deltaTime : number){
         super.update(deltaTime);

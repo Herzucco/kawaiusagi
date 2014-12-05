@@ -13,7 +13,7 @@ import ptcl = require("./Particles");
 export var canvas : HTMLCanvasElement;
 export var scene : BABYLON.Scene;
 export var engine : BABYLON.Engine;
-export var UI : UI;
+export var UI : u.UI;
 
 export function Start(){
     canvas = c.CreateCanvas('scene', 500, 500);
@@ -36,8 +36,9 @@ export function Start(){
     og.spawnDistance = 100;
     og.globalSpeed = 1;
     og.decreaseFactor = 0.01;
-    var particle = new ptcl.Particles(player.sphereMesh,scene);
+    var particle : ptcl.Particles = new ptcl.Particles(player.sphereMesh,scene);
     og.launch(2, player, scene);
+    
 }
 
 function update(deltaTime : number) {

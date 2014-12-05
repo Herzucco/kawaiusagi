@@ -37,6 +37,7 @@ export class BasicObstacle extends g.GameObject{
 
     }
 
+
     update(deltaTime : number){
         super.update(deltaTime);
 
