@@ -16,7 +16,7 @@ export class UI {
     cWidht : number;
     cHeight : number;
     alphaTime : number = 0;
-    public score : int = 0;
+    public score : number = 0;
     DrawUI (): void {
         //main menu draw
         if(this.state == MenuState.START_MENU) {

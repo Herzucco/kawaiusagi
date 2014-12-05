@@ -38,14 +38,7 @@ export function Start(){
     og.decreaseFactor = 0.01;
     var particle : ptcl.Particles = new ptcl.Particles(player.sphereMesh,scene);
     og.launch(2, player, scene);
-
-    var sepiaKernelMatrix : number[] = BABYLON.Matrix.FromValues(
-        0.393, 0.349, 0.272, 0,
-        0.769, 0.686, 0.534, 0,
-        0.189, 0.168, 0.131, 0,
-        0, 0, 0, 0
-    );
-    var postProcess = new BABYLON.ConvolutionPostProcess("Sepia", sepiaKernelMatrix, 1.0, null, null, engine, true);
+    
 }
 
 function update(deltaTime : number) {
