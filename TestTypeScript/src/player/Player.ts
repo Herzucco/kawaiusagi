@@ -162,7 +162,7 @@ export class Player extends g.GameObject{
             this.invincibility = false;
             var i : number;
             for(i = 0; i < this.characterTable.length; i++) {
-                this.characterTable[i].mesh.visibility = true;
+                this.characterTable[i].mesh.isVisible = true;
             }
 
         }
@@ -170,7 +170,7 @@ export class Player extends g.GameObject{
         {
             var i : number;
             for(i = 0; i < this.characterTable.length; i++) {
-                this.characterTable[i].mesh.visibility = !this.characterTable[i].mesh.visibility;
+                this.characterTable[i].mesh.isVisible = !this.characterTable[i].mesh.visibility;
             }
             this.fadingTimer = 0;
         }
