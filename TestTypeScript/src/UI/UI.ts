@@ -8,7 +8,7 @@ enum MenuState {
 }
 
 export class UI {
-    state : MenuState = MenuState.START_MENU;
+    public state : MenuState = MenuState.IN_GAME;
     title : string;
     canvas : HTMLCanvasElement;
     context : CanvasRenderingContext2D;
@@ -16,6 +16,7 @@ export class UI {
     cWidht : number;
     cHeight : number;
     alphaTime : number = 0;
+    public score : int = 0;
     DrawUI (): void {
         if(this.state == MenuState.START_MENU) {
             this.context.clearRect(0, 0, this.cWidht, this.cHeight);
@@ -31,7 +32,8 @@ export class UI {
             this.alphaTime += 0.02;
         }
         if(this.state == MenuState.IN_GAME){
-
+            this.context.font = 'italic 40pt Calibri';
+            this.context.fillText("Score : " + this.score.toString(), (this.cWidht / 2) - 100, 100);
         }
 
     }
