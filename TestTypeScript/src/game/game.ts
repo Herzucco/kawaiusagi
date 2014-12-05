@@ -30,8 +30,8 @@ export function Start(){
     var player = new p.Player(0,0,20,scene);
 
     var mainLight = new BABYLON.DirectionalLight("Dir0", new BABYLON.Vector3(0, -5, -50), scene);
-
     mainLight.diffuse = new BABYLON.Color3(1, 1, 1);
+    mainLight.specular = new BABYLON.Color3(0, 0, 0);
 
     og.spawnDistance = 100;
     og.globalSpeed = 1;
