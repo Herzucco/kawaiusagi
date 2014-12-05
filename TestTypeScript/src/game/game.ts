@@ -9,7 +9,7 @@ import cam = require("../rendering/camera");
 import p = require("../player/Player");
 import og = require("../decor/ObstaclesGenerator");
 import u = require("../UI/UI");
-
+import ptcl = require("./Particles");
 export var canvas : HTMLCanvasElement;
 export var scene : BABYLON.Scene;
 export var engine : BABYLON.Engine;
@@ -32,7 +32,7 @@ export function Start(){
     og.spawnDistance = 100;
     og.globalSpeed = 1;
     og.decreaseFactor = 0.01;
-
+    var particle = new ptcl.Particles(player.sphereMesh,scene);
     og.launch(2, player, scene);
 }
 
