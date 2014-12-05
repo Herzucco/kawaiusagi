@@ -20,6 +20,8 @@ export class Player extends g.GameObject{
     public characterTable : Prince[];
     invincibility : boolean;
     invincibilityTime : number;
+    invincibilityFadingTime : number;
+    fadingTimer : number;
     timer : number;
     scene : BABYLON.Scene;
     public sphereMesh : BABYLON.Mesh;
@@ -31,6 +33,7 @@ export class Player extends g.GameObject{
         this.y = y;
         this.z = z;
         this.invincibilityTime = 3;
+        this.invincibilityFadingTime = 0.2;
         this.radius = 5;
         this.rotationDir = 1; // 1 : sens anti-horaire, -1 : sens horaire
         this.startRotationSpeed = 0.01;
@@ -40,6 +43,8 @@ export class Player extends g.GameObject{
         this.characterTable = [];
         this.invincibility = false;
         this.timer = 0;
+        this.fadingTimer = 0;
+
 
         // création du mesh Sphere //
         this.sphereMesh  = BABYLON.Mesh.CreateSphere("PlayerSphere", 10, this.radius, scene);
@@ -53,12 +58,12 @@ export class Player extends g.GameObject{
 
     update(deltaTime : number){
         super.update(deltaTime);
-       
+        console.log(this.invincibility);
         this.rotateSphere();
 
         if(this.invincibility == true)
         {
-            this.invincibilityTimerCheck();
+            this.invincibilityTimerCheck(deltaTime);
         }
 
         var i : number;
@@ -90,7 +95,7 @@ export class Player extends g.GameObject{
     }
 
     rotateSphere() {
-        this.sphereMesh.rotation.z += this.rotationSpeed * this.rotationDir;
+        this.sphereMesh.rotation.z += (this.rotationSpeed/this.characterNb*10) * this.rotationDir;
     }
 
     checkCollisionForMesh(obstacle : bo.BasicObstacle){
@@ -101,7 +106,7 @@ export class Player extends g.GameObject{
             if (obstacle.mesh.intersectsMesh(this.characterTable[i].mesh)) {
                 obstacle.destroy();
                 this.invincibility = true;
-                this.timer = this.invincibilityTime*60;
+                this.timer = this.invincibilityTime;
                 this.destroyPrinces(i);
             }
         }
@@ -124,7 +129,6 @@ export class Player extends g.GameObject{
 
     createPrinces(){
 
-
         // création des princes //
         for(i=1; i<=this.characterNb; i++)  // On va répartir les princes équitablement autour de la sphere en fonction de leur nombre
         {
@@ -145,18 +149,32 @@ export class Player extends g.GameObject{
 
             this.characterTable.push(prince);
         }
-
     }
 
-    invincibilityTimerCheck(){
+    invincibilityTimerCheck(deltaTime : number){
 
         if(this.timer > 0)
         {
-            this.timer --;
+            this.timer -= deltaTime/10;
+            this.fadingTimer += deltaTime/10;
         }
         else{
             this.invincibility = false;
+            var i : number;
+            for(i = 0; i < this.characterTable.length; i++) {
+                this.characterTable[i].mesh.visibility = true;
+            }
+
         }
+        if(this.fadingTimer >= this.invincibilityFadingTime)
+        {
+            var i : number;
+            for(i = 0; i < this.characterTable.length; i++) {
+                this.characterTable[i].mesh.visibility = !this.characterTable[i].mesh.visibility;
+            }
+            this.fadingTimer = 0;
+        }
+
     }
 
 
