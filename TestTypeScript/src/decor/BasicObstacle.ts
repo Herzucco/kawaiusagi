@@ -6,6 +6,7 @@
 import g = require("../game/GameObject");
 import p = require("../player/Player");
 
+
 export class BasicObstacle extends g.GameObject{
     public mesh : BABYLON.Mesh;
     speed : number;

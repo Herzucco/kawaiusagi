@@ -5,6 +5,7 @@
 export var inputs : Object = {
 
 };
+
 export var codes : Object = {
     65 : "A",
     90 : "Z"

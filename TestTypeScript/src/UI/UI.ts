@@ -18,6 +18,7 @@ export class UI {
 
     }
     constructor (){
+
         //create canvas and context
         this.canvas = c.CreateCanvas('UI', 500, 500);
         this.context = this.canvas.getContext("2d");

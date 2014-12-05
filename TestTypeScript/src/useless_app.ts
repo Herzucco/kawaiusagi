@@ -37,6 +37,7 @@ export function Start(){
     var keys = [];
     keys.push({
         frame: 0,
+
         value: 1
     },{
         frame: 100,

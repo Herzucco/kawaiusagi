@@ -38,6 +38,7 @@ function update(deltaTime : number) {
 
     var i : number;
 
+
     g.GarbageObjects();
 
     for(i = 0; i < g.gameObjects.length; i++){

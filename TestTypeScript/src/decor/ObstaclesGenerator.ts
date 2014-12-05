@@ -5,6 +5,7 @@
 import bo = require("./BasicObstacle");
 import p = require("../player/Player");
 
+
 export var spawnDistance : number;
 export var globalSpeed : number;
 
