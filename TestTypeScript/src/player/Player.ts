@@ -23,6 +23,7 @@ export class Player extends g.GameObject{
     invincibilityFadingTime : number;
     fadingTimer : number;
     timer : number;
+    rotationSpeedRatio : number;
     scene : BABYLON.Scene;
     public sphereMesh : BABYLON.Mesh;
 
@@ -34,6 +35,7 @@ export class Player extends g.GameObject{
         this.z = z;
         this.invincibilityTime = 3;
         this.invincibilityFadingTime = 0.2;
+        this.rotationSpeedRatio = 10;
         this.radius = 5;
         this.rotationDir = 1; // 1 : sens anti-horaire, -1 : sens horaire
         this.startRotationSpeed = 0.01;
@@ -97,7 +99,7 @@ export class Player extends g.GameObject{
     }
 
     rotateSphere() {
-        this.sphereMesh.rotation.z += (this.rotationSpeed/this.characterNb*10) * this.rotationDir;
+        this.sphereMesh.rotation.z += (this.rotationSpeed/this.characterNb*this.rotationSpeedRatio) * this.rotationDir;
     }
 
     checkCollisionForMesh(obstacle : bo.BasicObstacle){
