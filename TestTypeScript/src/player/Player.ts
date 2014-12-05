@@ -97,14 +97,14 @@ export class Player extends g.GameObject{
         var i : number;
         if(this.invincibility == false)
         {
-        for(i = 0; i < this.characterTable.length; i++) {
-            if (obstacle.mesh.intersectsMesh(this.characterTable[i].mesh)) {
-                obstacle.destroy();
-                this.invincibility = true;
-                this.timer = this.invincibilityTime*60;
-                this.destroyPrinces(i);
+            for(i = 0; i < this.characterTable.length; i++) {
+                if (obstacle.mesh.intersectsMesh(this.characterTable[i].mesh)) {
+                    obstacle.destroy();
+                    this.invincibility = true;
+                    this.timer = this.invincibilityTime*60;
+                    this.destroyPrinces(i);
+                }
             }
-        }
         }
     }
 

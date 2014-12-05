@@ -3,13 +3,12 @@
  */
 
 ///<reference path="../../babylon.1.14.d.ts"/>
-export var camera : BABYLON.Camera;
+export var camera : BABYLON.FreeCamera;
 
 export function InitCamera(name : string, scene : BABYLON.Scene){
-    camera = new BABYLON.FreeCamera(name, new BABYLON.Vector3(0, 5, 0), scene);
+    camera = new BABYLON.FreeCamera(name, new BABYLON.Vector3(0, 5, 50), scene);
+    camera.rotation.y -= Math.PI;
 }
-
-
 export function CameraTest(canvas : HTMLCanvasElement){
-    camera.attachControl(canvas);
+    //camera.attachControl(canvas);
 }
