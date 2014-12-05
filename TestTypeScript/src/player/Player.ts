@@ -53,7 +53,7 @@ export class Player extends g.GameObject{
 
     update(deltaTime : number){
         super.update(deltaTime);
-        console.log(this.invincibility);
+       
         this.rotateSphere();
 
         if(this.invincibility == true)
