@@ -210,6 +210,16 @@ class Prince {
         princeMesh.parent = this.sphereMesh;
         princeMesh.position = new BABYLON.Vector3(this.x,this.y, this.z);
 
+        var princeMaterial = new BABYLON.StandardMaterial("prince material", scene);
+        switch (this.color){
+            case "BLUE" :
+                princeMaterial.diffuseColor = new BABYLON.Color3(0,0,1);
+                break;
+            case "RED" :
+                princeMaterial.diffuseColor = new BABYLON.Color3(1,0,0);
+                break;
+        }
+        princeMesh.material = princeMaterial;
         princeMesh.jumpAnimationVector = new BABYLON.Vector3(0, 3, 0);
 
         var animationBox = new BABYLON.Animation("anim", "jumpAnimationVector", 60, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);
