@@ -29,19 +29,19 @@ export function Start(){
 
     og.spawnDistance = 100;
     og.globalSpeed = 1;
-    og.generateObstacle(player.radius, scene, player);
-    og.generateObstacle(player.radius, scene, player);
+    og.decreaseFactor = 0.01;
+
+    og.launch(2, player, scene);
 }
 
 function update(deltaTime : number) {
     scene.render();
 
     var i : number;
-
-
     g.GarbageObjects();
 
     for(i = 0; i < g.gameObjects.length; i++){
         g.gameObjects[i].update(deltaTime);
     }
+    og.update(deltaTime);
 }
