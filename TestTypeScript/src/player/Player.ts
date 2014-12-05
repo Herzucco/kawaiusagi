@@ -24,7 +24,7 @@ export class Player extends g.GameObject{
     fadingTimer : number;
     timer : number;
     scene : BABYLON.Scene;
-    sphereMesh : BABYLON.Mesh;
+    public sphereMesh : BABYLON.Mesh;
 
     constructor(x : number, y : number, z :number, scene : BABYLON.Scene) {
         super();
