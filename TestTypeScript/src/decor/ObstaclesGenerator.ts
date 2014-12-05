@@ -19,8 +19,12 @@ var type : string = "";
 
 export function generateObstacle(radius : number, scene : BABYLON.Scene, player : p.Player, type : string){
     var angle : number = Math.random() * 10 * Math.PI * 2;
-    var posX : number = Math.sin(angle) * radius/2;
-    var posY : number = Math.cos(angle) * radius/2;
+    var randomFloor : number = Math.random()*10;
+    var floorCoeff : number = 1;
+    if(randomFloor < 5)
+    floorCoeff = 2;
+    var posX : number = Math.sin(angle) * radius/2 * floorCoeff;
+    var posY : number = Math.cos(angle) * radius/2 * floorCoeff;
 
     var b : bo.BasicObstacle = new bo.BasicObstacle(""+angle+"", 1, scene, globalSpeed, player, type);
     b.mesh.position = new BABYLON.Vector3(posX, posY, spawnDistance);

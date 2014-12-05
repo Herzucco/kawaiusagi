@@ -19,8 +19,9 @@ export class UI {
     public score : number = 0;
     DrawUI (): void {
         //main menu draw
+        this.context.clearRect(0, 0, this.cWidht, this.cHeight);
         if(this.state == MenuState.START_MENU) {
-            this.context.clearRect(0, 0, this.cWidht, this.cHeight);
+
             // drawTitle
             this.context.globalAlpha = 1;
             this.context.font = 'italic 40pt Calibri';

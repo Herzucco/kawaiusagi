@@ -29,7 +29,7 @@ export function Start(){
     UI = new u.UI(canvas.width,canvas.height);
     var player = new p.Player(0,0,20,scene);
 
-    var mainLight = new BABYLON.DirectionalLight("Dir0", new BABYLON.Vector3(0, -5, -50), scene);
+    var mainLight = new BABYLON.DirectionalLight("Dir0", new BABYLON.Vector3(0, 5, 50), scene);
     mainLight.diffuse = new BABYLON.Color3(1, 1, 1);
     mainLight.specular = new BABYLON.Color3(0, 0, 0);
 

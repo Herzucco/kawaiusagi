@@ -5,6 +5,7 @@
 import g = require("../game/GameObject");
 import inp = require("../inputs/inputs");
 import bo = require("../decor/BasicObstacle");
+import ga = require("../game/game");
 
 
 export class Player extends g.GameObject{
@@ -62,7 +63,7 @@ export class Player extends g.GameObject{
 
     update(deltaTime : number){
         super.update(deltaTime);
-        
+
         this.rotateSphere();
 
         if(this.invincibility == true)
@@ -75,7 +76,10 @@ export class Player extends g.GameObject{
         {
             this.characterTable[i].mesh.setPositionWithLocalVector(this.characterTable[i].mesh.jumpAnimationVector);
         }
+        if(inp.inputs["Z"]){
 
+            this.rotationDir *= -1;
+        }
         if(inp.inputs["A"]){
             for(i = 0; i < this.characterTable.length; i++)
             {
@@ -86,7 +90,7 @@ export class Player extends g.GameObject{
                 }
             }
         }
-        if(inp.inputs["Z"]){
+        if(inp.inputs["E"]){
             for(i = 0; i < this.characterTable.length; i++)
             {
                 if(this.characterTable[i].color == "RED" && this.characterTable[i].isJumping == false)
@@ -124,7 +128,7 @@ export class Player extends g.GameObject{
             for(i = 0; i < this.characterTable.length; i++) {
                 if (obstacle.mesh.intersectsMesh(this.characterTable[i].mesh)) {
                     obstacle.destroy();
-                    ////// score += 1
+                   ga.UI.score += 1;
 
                 }
             }
@@ -220,7 +224,7 @@ class Prince {
         this.sphereMesh = sphereMesh;
         this.characterRatio = characterRatio;
         this.isJumping = false;
-        this.jumpHeight = 7;
+        this.jumpHeight = 6;
 
        // var princeMesh : BABYLON.Mesh  = BABYLON.Mesh.CreateSphere("PrinceSphere", 10, this.characterRadius , scene);
         var princeMesh : BABYLON.Mesh  = BABYLON.Mesh.CreateBox("box", this.characterRatio, scene);
