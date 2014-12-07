@@ -28,6 +28,7 @@ export function Start(){
     cam.InitCamera("mainCamera", scene);
     cam.CameraTest(canvas);
     UI = new u.UI(canvas.width,canvas.height);
+    UI.TweenAlpha(true);
     var player = new p.Player(0,0,20,scene);
 
     var mainLight = new BABYLON.DirectionalLight("Dir0", new BABYLON.Vector3(0, 5, -50), scene);
