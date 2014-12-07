@@ -15,4 +15,18 @@ image-rendering: -webkit-optimize-contrast;
 image-rendering: -o-crisp-edges;
 image-rendering: crisp-edges;
 -ms-interpolation-mode: nearest-neighbor;
+    display: block;
+    width: 1024px;
+    height: 768px;
+    margin:auto;
+    left: 0;
+    right: 0;
+    top:0;
+    bottom:0;
+}
+@font-face {
+    font-family: sensation;
+    src: url(Font/Sansation-Light.ttf);
+    font-weight: normal;
+    font-style: normal;
 }

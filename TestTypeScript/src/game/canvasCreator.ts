@@ -6,8 +6,8 @@ export function CreateCanvas(id : string, x : number, y : number) : HTMLCanvasEl
     var canvas = <HTMLCanvasElement>document.createElement("canvas");
     document.body.appendChild(canvas);
     canvas.id = id;
-    canvas.width = 500;
-    canvas.height = 500;
+    canvas.width = x;
+    canvas.height = y;
 
     return canvas;
 }
@@ -16,9 +16,9 @@ export function CreateBabylonScene(canvas : HTMLCanvasElement, x : number, y : n
     var engine = new BABYLON.Engine(canvas, true);
     var scene = new BABYLON.Scene(engine);
 
-    canvas.width = 500;
+    canvas.width = x;
 
-    canvas.height = 500;
+    canvas.height = y;
 
     return scene;
 }
