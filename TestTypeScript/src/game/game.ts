@@ -17,8 +17,8 @@ export var UI : u.UI;
 export var layer : BABYLON.Layer;
 
 export function Start(){
-    canvas = c.CreateCanvas('scene', 500, 500);
-    scene = c.CreateBabylonScene(canvas, 500, 500);
+    canvas = c.CreateCanvas('scene', 1024, 768);
+    scene = c.CreateBabylonScene(canvas, 1024, 768);
     engine = scene.getEngine();
 
     engine.runRenderLoop(function() {
@@ -40,7 +40,8 @@ export function Start(){
     var particle : ptcl.Particles = new ptcl.Particles(player.sphereMesh,scene);
     og.launch(2, player, scene);
 
-    layer = new BABYLON.Layer("background", "./images/skybox.png", scene,true);
+    //ex background
+    //layer = new BABYLON.Layer("background", "./images/skybox.png", scene,true);
 }
 
 function update(deltaTime : number) {
