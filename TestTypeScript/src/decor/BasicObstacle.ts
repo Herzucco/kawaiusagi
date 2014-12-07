@@ -25,6 +25,8 @@ export class BasicObstacle extends g.GameObject {
     y : number;
     z : number;
 
+    player : p.Player;
+
     scene : BABYLON.Scene;
     sphereMesh : BABYLON.Mesh;
     mesh : BABYLON.Mesh;
@@ -33,13 +35,14 @@ export class BasicObstacle extends g.GameObject {
     isJumping : boolean;
     isJumper : boolean;
 
-    constructor(x : number, y : number, z :number, ratio : number, color : string, sphereMesh : BABYLON.Mesh, scene : BABYLON.Scene) {
+    constructor(x : number, y : number, z :number, ratio : number, color : string, player : p.Player, sphereMesh : BABYLON.Mesh, scene : BABYLON.Scene) {
         super();
 
         //assigning values
         this.x = x;
         this.y = y;
         this.z = z;
+        this.player = player;
         this.sphereMesh = sphereMesh;
         this.ratio = ratio;
         this.isJumping = false;
@@ -93,6 +96,7 @@ export class BasicObstacle extends g.GameObject {
 
         this.mesh.setPositionWithLocalVector(this.mesh.jumpAnimationVector);
         this.jump();
+        this.player
     }
 
     jump(){

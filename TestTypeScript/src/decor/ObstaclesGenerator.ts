@@ -18,7 +18,7 @@ var collectibleFrequency : number = 3;
 var type : string = "";
 
 export function generateObstacle(radius : number, scene : BABYLON.Scene, player : p.Player, color : string){
-    var helix : h.Helix = new h.Helix(0, 0, spawnDistance, globalSpeed, color, scene);
+    var helix : h.Helix = new h.Helix(0, 0, spawnDistance, globalSpeed, color, player, scene);
 }
 
 export function launch(f : number, p : p.Player, s : BABYLON.Scene){

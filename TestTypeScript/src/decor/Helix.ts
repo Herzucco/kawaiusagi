@@ -12,6 +12,7 @@ import g = require("../game/GameObject");
 import inp = require("../inputs/inputs");
 import bo = require("../decor/BasicObstacle");
 import ga = require("../game/game");
+import p = require("../player/Player");
 
 
 export class Helix extends g.GameObject{
@@ -20,6 +21,8 @@ export class Helix extends g.GameObject{
     public z : number;
     public obstaclesNb : number;
     public radius : number;
+
+    player : p.Player;
     startRotationSpeed : number;
     obstacleRadiusRatio : number;
     rotationDir : number;
@@ -34,8 +37,10 @@ export class Helix extends g.GameObject{
     timer : number;
     timeToReach : number = 0.5;
 
-    constructor(x : number, y : number, z :number, speed : number, color: string, scene : BABYLON.Scene) {
+    constructor(x : number, y : number, z :number, speed : number, color: string, player : p.Player,  scene : BABYLON.Scene) {
         super();
+
+        this.player = player;
 
         if(color == "RED"){
             this.color = color;
@@ -106,7 +111,7 @@ export class Helix extends g.GameObject{
             var posY : number = Math.cos(angle) * (this.radius/2 + obstacleRatio*0.5) - this.y;
             var posZ : number = 0;
 
-            var obstacle = new bo.BasicObstacle(posX, posY, posZ, obstacleRatio, this.color, this.sphereMesh, this.scene);
+            var obstacle = new bo.BasicObstacle(posX, posY, posZ, obstacleRatio, this.color, this.player, this.sphereMesh, this.scene);
 
             this.obstacleTable.push(obstacle);
         }
