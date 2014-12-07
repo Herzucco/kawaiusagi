@@ -6,41 +6,53 @@ import h = require("./Helix");
 import p = require("../player/Player");
 
 
-export var spawnDistance : number;
-export var globalSpeed : number;
-export var decreaseFactor : number;
+var spawnDistance : number;
+var globalSpeed : number;
+var decreaseFactor : number;
 
 var scene : BABYLON.Scene;
 var player : p.Player;
 var frequency : number;
 var time : number = 0;
-var collectibleFrequency : number = 3;
-var type : string = "";
 
+var isRunning : boolean = false;
 export function generateObstacle(radius : number, scene : BABYLON.Scene, player : p.Player, color : string){
     var helix : h.Helix = new h.Helix(0, 0, spawnDistance, globalSpeed, color, player, scene);
 }
 
-export function launch(f : number, p : p.Player, s : BABYLON.Scene){
+export function init(sd : number, gs : number, df : number, f : number, s : BABYLON.Scene){
+    spawnDistance = sd;
+    globalSpeed = gs;
+    decreaseFactor = df;
     frequency = f;
-    player = p;
     scene = s;
 }
 
-export function update(deltaTime : number){
-    time += deltaTime/10;
+export function launch(p : p.Player){
+    player = p;
+    isRunning = true;
+}
 
-    frequency -= decreaseFactor * (deltaTime / 10);
-    globalSpeed += decreaseFactor * (deltaTime / 10);
-    if(time >= frequency){
-        time = 0;
-        var whichObstacle = Math.random()*10;
-        var color;
-        if(whichObstacle > 5) {
-            color = "RED";
-        }else{
-            color = "BLUE";
+export function stop(){
+    isRunning = false;
+}
+
+export function update(deltaTime : number){
+    if(isRunning){
+        time += deltaTime/10;
+
+        frequency -= decreaseFactor * (deltaTime / 10);
+        globalSpeed += decreaseFactor * (deltaTime / 10);
+        if(time >= frequency){
+            time = 0;
+            var whichObstacle = Math.random()*10;
+            var color;
+            if(whichObstacle > 5) {
+                color = "RED";
+            }else{
+                color = "BLUE";
+            }
+            generateObstacle(player.radius, scene, player, color);
         }
-        generateObstacle(player.radius, scene, player, color);
     }
 }
