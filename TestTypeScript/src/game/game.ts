@@ -48,6 +48,26 @@ export function Start(){
     var starparticle : sp.starParticles = new sp.starParticles(50,50, scene);
     og.launch(2, player, scene);
 
+    /////// Postprocessing Bloom effect ////////////////
+    var blurWidth = 1.0;
+
+    var postProcess0 = new BABYLON.PassPostProcess("Scene copy", 1.0, cam.camera);
+    var postProcess1 = new BABYLON.PostProcess("Down sample", "./FX/downsample", ["screenSize", "highlightThreshold"], null, 0.25, cam.camera, BABYLON.Texture.BILINEAR_SAMPLINGMODE);
+    postProcess1.onApply = function (effect) {
+        effect.setFloat2("screenSize", postProcess1.width, postProcess1.height);
+        effect.setFloat("highlightThreshold", 0.90);
+    };
+    var postProcess2 = new BABYLON.BlurPostProcess("Horizontal blur", new BABYLON.Vector2(1.0, 0), blurWidth, 0.5, cam.camera);
+    var postProcess3 = new BABYLON.BlurPostProcess("Vertical blur", new BABYLON.Vector2(0, 1.0), blurWidth, 0.5, cam.camera);
+    var postProcess4 = new BABYLON.PostProcess("Final compose", "./FX/compose", ["sceneIntensity", "glowIntensity", "highlightIntensity"], ["sceneSampler"], 1, cam.camera);
+    postProcess4.onApply = function (effect) {
+        effect.setTextureFromPostProcess("sceneSampler", postProcess0);
+        effect.setFloat("sceneIntensity", 1);
+        effect.setFloat("glowIntensity", 2);
+        effect.setFloat("highlightIntensity", 5.0);
+    };
+    /////////////////////////////////////////////////////
+
     //ex background
     //layer = new BABYLON.Layer("background", "./images/skybox.png", scene,true);
 }
