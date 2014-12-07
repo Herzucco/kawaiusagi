@@ -20,6 +20,7 @@ export var layer : BABYLON.Layer;
 export function Start(){
     canvas = c.CreateCanvas('scene', 1024, 768);
     scene = c.CreateBabylonScene(canvas, 1024, 768);
+    scene.clearColor = new BABYLON.Color3(0,0,0);
     engine = scene.getEngine();
 
     engine.runRenderLoop(function() {
