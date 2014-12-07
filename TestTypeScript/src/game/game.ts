@@ -10,6 +10,7 @@ import p = require("../player/Player");
 import og = require("../decor/ObstaclesGenerator");
 import u = require("../UI/UI");
 import ptcl = require("./Particles");
+import sp = require("./starParticles");
 export var canvas : HTMLCanvasElement;
 export var scene : BABYLON.Scene;
 export var engine : BABYLON.Engine;
@@ -38,9 +39,11 @@ export function Start(){
     og.globalSpeed = 1;
     og.decreaseFactor = 0.01;
     var particle : ptcl.Particles = new ptcl.Particles(player.sphereMesh,scene);
+    var starParticles : sp.starParticles  = new sp.starParticles(30,30,scene);
+
     og.launch(2, player, scene);
 
-    layer = new BABYLON.Layer("background", "./images/skybox.png", scene,true);
+   // layer = new BABYLON.Layer("background", "./images/skybox.png", scene,true);
 }
 
 function update(deltaTime : number) {
