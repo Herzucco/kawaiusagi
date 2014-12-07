@@ -13,6 +13,7 @@ import u = require("../UI/UI");
 import ptcl = require("./Particles");
 import sp = require("./starParticles");
 
+import ms = u.MenuState;
 export var canvas : HTMLCanvasElement;
 export var scene : BABYLON.Scene;
 export var engine : BABYLON.Engine;
@@ -82,7 +83,9 @@ function update(deltaTime : number) {
     for(i = 0; i < g.gameObjects.length; i++){
         g.gameObjects[i].update(deltaTime);
     }
-    og.update(deltaTime);
+    if(UI.state == u.MenuState.IN_GAME) {
+        og.update(deltaTime);
+    }
 }
 
 function generateMaterials(){
