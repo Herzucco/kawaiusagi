@@ -20,21 +20,16 @@ export var engine : BABYLON.Engine;
 export var UI : u.UI;
 export var layer : BABYLON.Layer;
 
-export function Start(){
+export function Init(){
     canvas = c.CreateCanvas('scene', 1024, 768);
     scene = c.CreateBabylonScene(canvas, 1024, 768);
     scene.clearColor = new BABYLON.Color3(0,0,0);
     engine = scene.getEngine();
 
-    engine.runRenderLoop(function() {
-        update(BABYLON.Tools.GetDeltaTime()/100);
-    });
-
     cam.InitCamera("mainCamera", scene);
-    cam.CameraTest(canvas);
+
     UI = new u.UI(canvas.width,canvas.height);
     UI.TweenAlpha(true);
-    var player = new p.Player(0,5,44.8,scene);
 
     var mainLight = new BABYLON.DirectionalLight("Dir0", new BABYLON.Vector3(0, 5, -50), scene);
     mainLight.diffuse = new BABYLON.Color3(1, 1, 1);
@@ -42,10 +37,17 @@ export function Start(){
 
     generateMaterials();
 
-    og.spawnDistance = -100;
-    og.globalSpeed = 10;
-    og.decreaseFactor = 0.01;
-    og.launch(2, player, scene);
+    og.init(-100, 10, 0.01, 2, scene);
+
+    Start();
+
+    engine.runRenderLoop(function() {
+        update(BABYLON.Tools.GetDeltaTime()/100);
+    });
+}
+
+export function Start(){
+    var player = new p.Player(0,5,44.8,scene);
 
     // space particles generation /////////////////////
 
@@ -70,6 +72,8 @@ export function Start(){
         effect.setFloat("glowIntensity", 2);
         effect.setFloat("highlightIntensity", 5.0);
     };
+
+    og.launch(player);
     /////////////////////////////////////////////////////
 
     //ex background
@@ -100,4 +104,9 @@ function generateMaterials(){
 
     m.AddMaterial("RED_Obstacle", redMaterial);
     m.AddMaterial("BLUE_Obstacle", blueMaterial);
+}
+
+export function Stop(){
+    g.DestroyAll();
+    og.stop();
 }

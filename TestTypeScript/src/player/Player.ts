@@ -53,6 +53,7 @@ export class Player extends g.GameObject {
 
 
         // création du mesh Sphere //
+        console.log(scene);
         this.sphereMesh = BABYLON.Mesh.CreateSphere("PlayerSphere", 10, this.radius, scene);
         this.sphereMesh.position = new BABYLON.Vector3(this.x, this.y, this.z);
         this.scene = scene;
