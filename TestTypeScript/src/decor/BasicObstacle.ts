@@ -83,6 +83,7 @@ export class BasicObstacle extends g.GameObject {
 
     update(deltaTime : number){
         super.update(deltaTime);
+
         //this.mesh.setPositionWithLocalVector(this.mesh.jumpAnimationVector);
     }
 
