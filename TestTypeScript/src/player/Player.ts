@@ -36,7 +36,7 @@ export class Player extends g.GameObject {
         this.x = x;
         this.y = y;
         this.z = z;
-        this.radius = 1;
+        this.radius = 0.05;
         /*this.invincibilityTime = 3;
          this.invincibilityFadingTime = 0.2;
          this.rotationSpeedRatio = 10;
@@ -112,7 +112,7 @@ export class Player extends g.GameObject {
         /*var i : number;
 
          for(i = 0; i < this.characterTable.length; i++) {*/
-        if (obstacle.sphereMesh.intersectsMesh(this.sphereMesh)) {
+        if (obstacle.mesh.intersectsMesh(this.sphereMesh)) {
             obstacle.destroy();
             console.log("colision detectée!!!");
             this.destroyPlayer();
