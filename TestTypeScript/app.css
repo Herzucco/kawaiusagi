@@ -16,3 +16,9 @@ image-rendering: -o-crisp-edges;
 image-rendering: crisp-edges;
 -ms-interpolation-mode: nearest-neighbor;
 }
+@font-face {
+    font-family: sensation;
+    src: url(Font/Sansation-Light.ttf);
+    font-weight: normal;
+    font-style: normal;
+}

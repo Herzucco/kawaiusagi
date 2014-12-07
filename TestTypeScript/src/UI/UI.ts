@@ -4,11 +4,12 @@
 import c = require("../game/canvasCreator");
 enum MenuState {
     START_MENU,
-    IN_GAME
+    IN_GAME,
+    SCORE
 }
 
 export class UI {
-    public state : MenuState = MenuState.IN_GAME;
+    public state : MenuState = MenuState.SCORE;
     title : string;
     canvas : HTMLCanvasElement;
     context : CanvasRenderingContext2D;
@@ -24,19 +25,36 @@ export class UI {
 
             // drawTitle
             this.context.globalAlpha = 1;
-            this.context.font = 'italic 40pt Calibri';
-            this.context.fillText(this.title, (this.cWidht / 2) - 100, 100);
+            this.context.font = ' 72px "sensation"';
+            this.context.fillText(this.title, (this.cWidht / 2) - 200, 100);
             //drawClicktoplay
             this.context.globalAlpha = this.alpha;
-            this.context.font = 'italic 20pt Cambria';
+            this.context.font = ' 20pt "sensation"';
             this.context.fillText("Click to play", (this.cWidht / 2) - 80, 200);
             this.alpha = Math.abs(Math.cos(this.alphaTime));
             this.alphaTime += 0.02;
         }
         //in game draw
         if(this.state == MenuState.IN_GAME){
-            this.context.font = 'italic 40pt Calibri';
+            this.context.font = ' 40pt "sensation"';
             this.context.fillText("Score : " + this.score.toString(), (this.cWidht / 2) - 100, 100);
+        }
+        if(this.state == MenuState.SCORE)
+        {
+            // drawGameOver
+            this.context.globalAlpha = 1;
+            this.context.font = ' 60pt "sensation"';
+            this.context.fillText("Game Over", (this.cWidht / 2) - 200, 150);
+            //drawScore
+            this.context.font = ' 20pt "sensation"';
+            this.context.fillText("Score : "+ this.score.toString(), (this.cWidht / 2) - 80, 250);
+
+            //drawReplay
+            this.context.globalAlpha = this.alpha;
+            this.context.font = ' 20pt "sensation"';
+            this.context.fillText("Click to Retry", (this.cWidht / 2) - 80, 350);
+            this.alpha = Math.abs(Math.cos(this.alphaTime));
+            this.alphaTime += 0.02;
         }
 
     }
