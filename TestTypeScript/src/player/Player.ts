@@ -114,6 +114,7 @@ export class Player extends g.GameObject {
          for(i = 0; i < this.characterTable.length; i++) {*/
         if (obstacle.sphereMesh.intersectsMesh(this.sphereMesh)) {
             obstacle.destroy();
+            console.log("colision detectée!!!");
             this.destroyPlayer();
         }
         //}
