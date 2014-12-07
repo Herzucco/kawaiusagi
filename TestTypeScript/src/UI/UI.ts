@@ -133,7 +133,7 @@ export class UI {
         else
             this.from = 0;
         this.alpha = this.from;
-            setTimeout(that.EndTween,1000);
+        setTimeout(that.EndTween,1500);
     }
     //end the tween
     EndTween() : void {
@@ -152,7 +152,7 @@ export class UI {
         if(this.state == MenuState.START_MENU){
             this.change = true;
             this.TweenAlpha(false);
-            setTimeout(that.ToInGame,1001);
+            setTimeout(that.ToInGame,1501);
         }
     }
     //method called on game over click
@@ -160,14 +160,14 @@ export class UI {
         if(this.state == MenuState.SCORE){
             this.change = true;
             this.TweenAlpha(false);
-            setTimeout(that.ToMain,1001);
+            setTimeout(that.ToMain,1501);
         }
     }
     //public method called on the player death
     public GameOver() : void{
         this.change = true;
         this.TweenAlpha(false);
-        setTimeout(that.ToGameOver,1001);
+        setTimeout(that.ToGameOver,1501);
     }
     //end of the gameover tween
     ToGameOver() : void
