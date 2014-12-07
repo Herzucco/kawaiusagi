@@ -5,79 +5,91 @@
 ///<reference path="../../babylon.1.14.d.ts"/>
 import g = require("../game/GameObject");
 import p = require("../player/Player");
+import m = require("../rendering/materials");
 
+/************************************************
+ * Obstacle of Helix Class
+ *
+ * @number : x - x relative position
+ * @number : y - y relative position
+ * @number : z - z relative position
+ * @number : ratio - obstacle ratio
+ * @number : color - color of the obstacle mesh
+ * @number : sphereMesh - parent mesh of the obstacle's mesh
+ * @number : scene - scene containing the mesh
+ ************************************************/
+export class BasicObstacle extends g.GameObject {
+    public jumpHeight : number;
 
-export class BasicObstacle extends g.GameObject{
-    public mesh : BABYLON.Mesh;
-    speed : number;
-    player : p.Player;
+    x : number;
+    y : number;
+    z : number;
+
     scene : BABYLON.Scene;
-    line : BABYLON.LinesMesh;
-    type : string;
-    constructor(name : string, size : number, scene : BABYLON.Scene, speed : number, player : p.Player, type : string){
+    sphereMesh : BABYLON.Mesh;
+    mesh : BABYLON.Mesh;
+
+    ratio : number;
+    isJumping : boolean;
+
+    constructor(x : number, y : number, z :number, ratio : number, color : string, sphereMesh : BABYLON.Mesh, scene : BABYLON.Scene) {
         super();
 
+        //assigning values
+        this.x = x;
+        this.y = y;
+        this.z = z;
+        this.sphereMesh = sphereMesh;
+        this.ratio = ratio;
+        this.isJumping = false;
+        this.jumpHeight = 6;
 
-        this.mesh = BABYLON.Mesh.CreateBox(name, size, scene);
-        this.speed = speed;
-        this.player = player;
-        this.scene = scene;
-        this.type = type;
+        //creating, positioning and scaling the mesh
+        var mesh : BABYLON.Mesh  = BABYLON.Mesh.CreateBox("box", this.ratio, scene);
+        mesh.rotation.z = (Math.atan2(this.y - this.sphereMesh.position.y, this.x - this.sphereMesh.position.x));
+        mesh.parent = this.sphereMesh;
+        mesh.position = new BABYLON.Vector3(this.x,this.y, this.z);
+        mesh.scaling.x = 5;
 
-        var obstacleMaterial = new BABYLON.StandardMaterial("prince material", scene);
+        //get material for the mesh
+        mesh.material = m.GetMaterial(color+"_Obstacle");
+        mesh.jumpAnimationVector = new BABYLON.Vector3(0, 3, 0);
 
-        switch (this.type){
-            case "OBSTACLE" :
-                obstacleMaterial.diffuseColor = new BABYLON.Color3(0,0,0);
-                break;
-            case "COLLECTIBLE" :
-                obstacleMaterial.diffuseColor = new BABYLON.Color3(1,1,0);
-                break;
-        }
-        this.mesh.material = obstacleMaterial;
+        var keys = [];
+        keys.push({
+            frame: 0,
+            value: new BABYLON.Vector3(0, 3, 0)
+        },{
+            frame: 10,
+            value: new BABYLON.Vector3(0, this.jumpHeight-1, 0)
+        },{
+            frame: 15,
+            value: new BABYLON.Vector3(0, this.jumpHeight, 0)
+        },{
+            frame: 25,
+            value: new BABYLON.Vector3(0, 3, 0)
+        });
 
+        var jumpAnimation = new BABYLON.Animation("anim", "jumpAnimationVector", 60, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);
+        jumpAnimation.setKeys(keys);
+        mesh.animations.push(jumpAnimation);
+
+        this.mesh = mesh;
     }
 
+    endJump(){
+        this.isJumping = false;
+    }
 
     update(deltaTime : number){
         super.update(deltaTime);
-        if(this.mesh.position.z <= 22)
-        {
-            var alertMaterial = new BABYLON.StandardMaterial("prince material", this.scene);
-            alertMaterial.diffuseColor = new BABYLON.Color3(1,0,0);
-            this.mesh.material = alertMaterial;
-
-        }
-        this.mesh.position.z -= this.speed * deltaTime;
-        switch (this.type){
-            case "OBSTACLE" :
-                this.player.checkCollisionForMesh(this);
-                break;
-            case "COLLECTIBLE" :
-                this.player.checkCollectibleCatch(this);
-                break;
-        }
-
-
-
-
-
-        if(this.line == null){
-            this.line = BABYLON.Mesh.CreateLines("lines", [
-                this.mesh.position,
-                new BABYLON.Vector3(this.mesh.position.x, this.mesh.position.y, this.mesh.position.z-1000),
-            ], this.scene);
-        }
-
-        if(this.mesh.position.z <= 10){
-            this.destroy();
-        }
+        //this.mesh.setPositionWithLocalVector(this.mesh.jumpAnimationVector);
     }
 
-    destroy(){
-        this.mesh.dispose(false);
-        this.line.dispose(false);
+    jump(){
+        this.scene.beginAnimation(this.mesh, 0, 25, false, 1,
+                                    this.endJump.bind(this));
 
-        super.destroy();
+        this.isJumping = true;
     }
 }
