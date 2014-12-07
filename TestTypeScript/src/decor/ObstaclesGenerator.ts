@@ -2,7 +2,7 @@
  * Created by herzucco on 21/11/2014.
  */
 ///<reference path="../../babylon.1.14.d.ts"/>
-import bo = require("./BasicObstacle");
+import h = require("./Helix");
 import p = require("../player/Player");
 
 
@@ -17,17 +17,8 @@ var time : number = 0;
 var collectibleFrequency : number = 3;
 var type : string = "";
 
-export function generateObstacle(radius : number, scene : BABYLON.Scene, player : p.Player, type : string){
-    var angle : number = Math.random() * 10 * Math.PI * 2;
-    var randomFloor : number = Math.random()*10;
-    var floorCoeff : number = 1;
-    if(randomFloor < 5)
-    floorCoeff = 2;
-    var posX : number = Math.sin(angle) * radius/2 * floorCoeff;
-    var posY : number = Math.cos(angle) * radius/2 * floorCoeff;
-
-    var b : bo.BasicObstacle = new bo.BasicObstacle(""+angle+"", 1, scene, globalSpeed, player, type);
-    b.mesh.position = new BABYLON.Vector3(posX, posY, spawnDistance);
+export function generateObstacle(radius : number, scene : BABYLON.Scene, player : p.Player, color : string){
+    var helix : h.Helix = new h.Helix(0, 0, spawnDistance, globalSpeed, color, scene);
 }
 
 export function launch(f : number, p : p.Player, s : BABYLON.Scene){
@@ -44,14 +35,12 @@ export function update(deltaTime : number){
     if(time >= frequency){
         time = 0;
         var whichObstacle = Math.random()*10;
-        if(whichObstacle > collectibleFrequency)
-        {
-            type = "OBSTACLE"
+        var color;
+        if(whichObstacle > 5) {
+            color = "RED";
+        }else{
+            color = "BLUE";
         }
-        else
-        {
-            type = "COLLECTIBLE";
-        }
-        generateObstacle(player.radius, scene, player, type);
+        generateObstacle(player.radius, scene, player, color);
     }
 }

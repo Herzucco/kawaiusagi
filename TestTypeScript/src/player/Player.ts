@@ -54,9 +54,9 @@ export class Player extends g.GameObject{
         this.sphereMesh  = BABYLON.Mesh.CreateSphere("PlayerSphere", 10, this.radius, scene);
         this.sphereMesh.position = new BABYLON.Vector3(this.x, this.y, this.z);
         this.scene = scene;
-        //this.sphereMesh.isVisible = false;
+        this.sphereMesh.isVisible = false;
 
-        this.createPrinces();
+        //this.createPrinces();
 
     }
 
@@ -85,8 +85,7 @@ export class Player extends g.GameObject{
             {
                 if(this.characterTable[i].color == "BLUE" && this.characterTable[i].isJumping == false)
                 {
-                    this.scene.beginAnimation(this.characterTable[i].mesh, 0, 25, false, 1, this.characterTable[i].endJump.bind(this.characterTable[i]));
-                    this.characterTable[i].isJumping = true;
+
                 }
             }
         }

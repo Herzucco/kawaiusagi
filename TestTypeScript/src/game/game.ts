@@ -3,6 +3,7 @@
  */
 
 ///<reference path="../../babylon.1.14.d.ts"/>
+import m = require("../rendering/materials")
 import c = require("./canvasCreator");
 import g = require("./GameObject");
 import cam = require("../rendering/camera");
@@ -10,6 +11,8 @@ import p = require("../player/Player");
 import og = require("../decor/ObstaclesGenerator");
 import u = require("../UI/UI");
 import ptcl = require("./Particles");
+
+
 export var canvas : HTMLCanvasElement;
 export var scene : BABYLON.Scene;
 export var engine : BABYLON.Engine;
@@ -34,8 +37,10 @@ export function Start(){
     mainLight.diffuse = new BABYLON.Color3(1, 1, 1);
     mainLight.specular = new BABYLON.Color3(0, 0, 0);
 
+    generateMaterials();
+
     og.spawnDistance = 100;
-    og.globalSpeed = 1;
+    og.globalSpeed = 10;
     og.decreaseFactor = 0.01;
     var particle : ptcl.Particles = new ptcl.Particles(player.sphereMesh,scene);
     og.launch(2, player, scene);
@@ -54,4 +59,15 @@ function update(deltaTime : number) {
         g.gameObjects[i].update(deltaTime);
     }
     og.update(deltaTime);
+}
+
+function generateMaterials(){
+    var redMaterial = new BABYLON.StandardMaterial("red obstacle material", scene);
+    var blueMaterial = new BABYLON.StandardMaterial("blue obstacle material", scene);
+
+    redMaterial.diffuseColor = new BABYLON.Color3(1, 0, 0);
+    blueMaterial.diffuseColor = new BABYLON.Color3(0, 0, 1);
+
+    m.AddMaterial("RED_Obstacle", redMaterial);
+    m.AddMaterial("BLUE_Obstacle", blueMaterial);
 }
