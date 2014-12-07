@@ -55,7 +55,7 @@ export class Helix extends g.GameObject{
         this.startRotationSpeed = 0.005;
         this.rotationSpeed = this.startRotationSpeed;
         this.obstacleRadiusRatio = 5;
-        this.obstaclesNb = Math.floor(Math.random()*6)+1;
+        this.obstaclesNb = Math.floor(Math.random()*4)+2;
         this.obstacleTable = [];
         this.speed = speed;
         this.timer = this.timeToReach;
