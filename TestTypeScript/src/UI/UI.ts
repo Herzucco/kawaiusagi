@@ -102,9 +102,9 @@ export class UI {
     }
     //end the tween
     EndTween() : void {
-        console.log("end tween");
         this.tween = false;
-        this.context.globalAlpha = 1;
+        if(this.context)
+            this.context.globalAlpha = 1;
     }
     UIClick () : void{
         if(this.state == MenuState.START_MENU){
