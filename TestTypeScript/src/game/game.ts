@@ -34,7 +34,7 @@ export function Start(){
     cam.CameraTest(canvas);
     UI = new u.UI(canvas.width,canvas.height);
     UI.TweenAlpha(true);
-    var player = new p.Player(0,0,20,scene);
+    var player = new p.Player(0,3,50,scene);
 
     var mainLight = new BABYLON.DirectionalLight("Dir0", new BABYLON.Vector3(0, 5, -50), scene);
     mainLight.diffuse = new BABYLON.Color3(1, 1, 1);
@@ -45,10 +45,13 @@ export function Start(){
     og.spawnDistance = -100;
     og.globalSpeed = 10;
     og.decreaseFactor = 0.01;
-    var particle : ptcl.Particles = new ptcl.Particles(player.sphereMesh,scene);
-    var starparticle : sp.starParticles = new sp.starParticles(50,50, scene);
     og.launch(2, player, scene);
 
+    // space particles generation /////////////////////
+
+    var starparticle : sp.starParticles = new sp.starParticles(50,50, scene);
+
+    ///////////////////////////////////////////////////////////////////////
     /////// Postprocessing Bloom effect ////////////////
     var blurWidth = 1.0;
 
