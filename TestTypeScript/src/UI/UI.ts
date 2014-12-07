@@ -26,7 +26,7 @@ export class UI {
     //bool yo say if we are in a tween
     change : boolean = false;
     blockInput : boolean = false;
-
+    basicColor : string = "#A999A9";
     //UpdateMethod of the UI
     DrawUI (): void {
         //main menu draw
@@ -60,6 +60,11 @@ export class UI {
         }
         if(this.state == MenuState.SCORE)
         {
+            if(i.inputs["Space"] && this.blockInput == false)
+            {
+                this.GameOverClick();
+                this.blockInput = true;
+            }
             this.ScoreMenu();
         }
     }
@@ -80,6 +85,8 @@ export class UI {
             this.context.globalAlpha = 1;
         this.context.font = ' 30pt "sensation"';
         this.context.fillText("By Adrien Carta, Gabin Ferellec & Christophe Galati", 60, 730);
+
+
     }
     //draw the ending menu
     ScoreMenu() : void{
@@ -96,13 +103,26 @@ export class UI {
         if(this.tween == false)
             this.context.globalAlpha = this.alpha;
         this.context.font = ' 72pt "sensation"';
-        this.context.fillText("Click to Retry", (this.cWidht / 2) - 300, 600);
+        this.context.fillText("Space to Retry", (this.cWidht / 2) - 300, 600);
     }
     //draw the in game HUD
     InGameMenu() : void{
         this.context.font = ' 40pt "sensation"';
         this.context.fillText("Score : " + this.score.toString(), (this.cWidht / 2) - 150, 100);
-        this.context.fillRect(0,0,25,this.cHeight);
+        this.context.globalAlpha = 0.7;
+        this.context.shadowColor = "#0033CC";
+        this.context.fillStyle = "#0033CC";
+        this.context.fillRect(0,0,50,this.cHeight);
+        this.context.shadowColor = "#E60000";
+        this.context.fillStyle = "#E60000";
+        this.context.fillRect(this.cWidht - 50,0,50,this.cHeight);
+        this.context.shadowColor = this.basicColor;
+        this.context.fillStyle = this.basicColor;
+        this.context.globalAlpha = 1;
+        this.context.font = ' 60pt "sensation"';
+        this.context.fillText("A", 20, 410);
+        this.context.fillText("Z",this.cWidht - 75, 410);
+
     }
     //initiate the tween
     public  TweenAlpha(way : boolean) : void
@@ -113,12 +133,11 @@ export class UI {
         else
             this.from = 0;
         this.alpha = this.from;
-            setTimeout(that.EndTween,1000);
+        setTimeout(that.EndTween,1500);
     }
     //end the tween
     EndTween() : void {
         that.tween = false;
-        console.log(that.from);
         if(that.context)
             that.context.globalAlpha = 1;
     }
@@ -128,24 +147,39 @@ export class UI {
         that.blockInput = false;
         that.TweenAlpha(true);
     }
-    //metho called when we click on the main menu
+    //method called when we click on the main menu
     UIClick () : void{
         if(this.state == MenuState.START_MENU){
             this.change = true;
             this.TweenAlpha(false);
-            setTimeout(that.ToInGame,1001);
+            setTimeout(that.ToInGame,1501);
+        }
+    }
+    //method called on game over click
+    GameOverClick () : void{
+        if(this.state == MenuState.SCORE){
+            this.change = true;
+            this.TweenAlpha(false);
+            setTimeout(that.ToMain,1501);
         }
     }
     //public method called on the player death
     public GameOver() : void{
         this.change = true;
         this.TweenAlpha(false);
-        setTimeout(that.ToGameOver,1001);
+        setTimeout(that.ToGameOver,1501);
     }
     //end of the gameover tween
     ToGameOver() : void
     {
         that.state = MenuState.SCORE;
+        that.blockInput = false;
+        that.TweenAlpha(true);
+    }
+    //end of the gameover tween
+    ToMain() : void
+    {
+        that.state = MenuState.START_MENU;
         that.blockInput = false;
         that.TweenAlpha(true);
     }
