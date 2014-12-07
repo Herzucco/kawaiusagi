@@ -41,7 +41,7 @@ export function Start(){
 
     generateMaterials();
 
-    og.spawnDistance = 100;
+    og.spawnDistance = -100;
     og.globalSpeed = 10;
     og.decreaseFactor = 0.01;
     var particle : ptcl.Particles = new ptcl.Particles(player.sphereMesh,scene);
