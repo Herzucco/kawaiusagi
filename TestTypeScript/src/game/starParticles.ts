@@ -9,7 +9,8 @@ export class starParticles {
     height : number;
 
 
-    constructor (height : number, width : number, scene : BABYLON.Scene){
+    constructor (height : number, width : number, scene : BABYLON.Scene){   //
+
         this.particleSystem = new BABYLON.ParticleSystem("particles", 2000, scene);
         this.particleSystem.particleTexture = new BABYLON.Texture("./images/flare1.jpg", scene);
         this.width = width;
