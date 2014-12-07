@@ -77,14 +77,14 @@ export class Helix extends g.GameObject{
         this.timer += deltaTime/10;
 
         this.rotateSphere();
-        this.sphereMesh.position.z -= this.speed * (deltaTime/10);
+        this.sphereMesh.position.z += this.speed * (deltaTime/10);
 
         if(inp.inputs[this.input] && this.timer >= this.timeToReach){
             this.timer = 0;
             this.rotationDir *= -1;
         }
 
-        if(this.sphereMesh.position.z <= -10){
+        if(this.sphereMesh.position.z >= 55){
             ga.UI.score += 1;
             this.destroy();
         }
