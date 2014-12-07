@@ -9,7 +9,8 @@ export var inputs : Object = {
 export var codes : Object = {
     65 : "A",
     90 : "Z",
-    69 : "E"
+    69 : "E",
+    32 : "Space"
 };
 
 window.addEventListener("keydown", function(e){

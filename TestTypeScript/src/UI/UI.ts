@@ -2,11 +2,14 @@
  * Created by Adrien on 20/11/2014.
  */
 import c = require("../game/canvasCreator");
+import  i = require("../inputs/inputs");
 export enum MenuState {
     START_MENU,
     IN_GAME,
     SCORE
 }
+//very important, to correct settimeout scope problem
+export  var that : any;
 
 export class UI {
     public state : MenuState = MenuState.START_MENU;
@@ -20,6 +23,11 @@ export class UI {
     tween : boolean = false;
     from : number = 0;
     public score : number = 0;
+    //bool yo say if we are in a tween
+    change : boolean = false;
+    blockInput : boolean = false;
+
+    //UpdateMethod of the UI
     DrawUI (): void {
         //main menu draw
         this.context.clearRect(0, 0, this.cWidht, this.cHeight);
@@ -37,7 +45,13 @@ export class UI {
             this.alpha = Math.abs(Math.cos(this.alphaTime));
             this.alphaTime += 0.02;
         }
-        if(this.state == MenuState.START_MENU) {
+        if(this.state == MenuState.START_MENU ) {
+            //you can click only on the main menu
+            if(i.inputs["Space"] && this.blockInput == false)
+            {
+                this.UIClick();
+                this.blockInput = true;
+            }
             this.MainMenu();
         }
         //in game draw
@@ -60,7 +74,7 @@ export class UI {
         if(this.tween == false)
             this.context.globalAlpha = this.alpha;
         this.context.font = ' 40pt "sensation"';
-        this.context.fillText("Click to play", (this.cWidht / 2) - 150, 420);
+        this.context.fillText("Space to play", (this.cWidht / 2) - 150, 420);
         //DrawCredits
         if(this.tween == false)
             this.context.globalAlpha = 1;
@@ -88,6 +102,7 @@ export class UI {
     InGameMenu() : void{
         this.context.font = ' 40pt "sensation"';
         this.context.fillText("Score : " + this.score.toString(), (this.cWidht / 2) - 150, 100);
+        this.context.fillRect(0,0,25,this.cHeight);
     }
     //initiate the tween
     public  TweenAlpha(way : boolean) : void
@@ -98,18 +113,41 @@ export class UI {
         else
             this.from = 0;
         this.alpha = this.from;
-        setTimeout(this.EndTween,1000);
+            setTimeout(that.EndTween,1000);
     }
     //end the tween
     EndTween() : void {
-        this.tween = false;
-        if(this.context)
-            this.context.globalAlpha = 1;
+        that.tween = false;
+        console.log(that.from);
+        if(that.context)
+            that.context.globalAlpha = 1;
     }
+    //end of the tween to go to ingame state
+    public ToInGame() : void {
+        that.state = MenuState.IN_GAME;
+        that.blockInput = false;
+        that.TweenAlpha(true);
+    }
+    //metho called when we click on the main menu
     UIClick () : void{
         if(this.state == MenuState.START_MENU){
-            
+            this.change = true;
+            this.TweenAlpha(false);
+            setTimeout(that.ToInGame,1001);
         }
+    }
+    //public method called on the player death
+    public GameOver() : void{
+        this.change = true;
+        this.TweenAlpha(false);
+        setTimeout(that.ToGameOver,1001);
+    }
+    //end of the gameover tween
+    ToGameOver() : void
+    {
+        that.state = MenuState.SCORE;
+        that.blockInput = false;
+        that.TweenAlpha(true);
     }
     constructor (w : number, h : number){
 
@@ -122,5 +160,7 @@ export class UI {
         this.context.shadowBlur = 15;
         this.context.shadowColor = "#A999A9";
         this.context.fillStyle = "#A999A9";
+        //with that, we will not have the this scope problem when we will call methods with settimeout
+        that = this;
     }
 }
