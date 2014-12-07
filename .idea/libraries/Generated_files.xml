@@ -1,0 +1,41 @@
+<component name="libraryTable">
+  <library name="Generated files" type="javaScript">
+    <properties>
+      <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/TestTypeScript/src/game/game.js" />
+        <item url="file://$PROJECT_DIR$/TestTypeScript/src/player/Player.js" />
+        <item url="file://$PROJECT_DIR$/TestTypeScript/src/rendering/materials.js" />
+        <item url="file://$PROJECT_DIR$/TestTypeScript/src/game/canvasCreator.js" />
+        <item url="file://$PROJECT_DIR$/TestTypeScript/src/decor/ObstaclesGenerator.js" />
+        <item url="file://$PROJECT_DIR$/TestTypeScript/src/game/GameObject.js" />
+        <item url="file://$PROJECT_DIR$/TestTypeScript/src/decor/BasicObstacle.js" />
+        <item url="file://$PROJECT_DIR$/TestTypeScript/src/game/starParticles.js" />
+        <item url="file://$PROJECT_DIR$/TestTypeScript/src/useless_app.js" />
+        <item url="file://$PROJECT_DIR$/TestTypeScript/src/UI/UI.js" />
+        <item url="file://$PROJECT_DIR$/TestTypeScript/src/inputs/inputs.js" />
+        <item url="file://$PROJECT_DIR$/TestTypeScript/src/game/Particles.js" />
+        <item url="file://$PROJECT_DIR$/TestTypeScript/src/rendering/camera.js" />
+        <item url="file://$PROJECT_DIR$/TestTypeScript/src/decor/Helix.js" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/TestTypeScript/src/app.js" />
+      <root url="file://$PROJECT_DIR$/TestTypeScript/src/app.js" />
+      <root url="file://$PROJECT_DIR$/TestTypeScript/src/game/game.js" />
+      <root url="file://$PROJECT_DIR$/TestTypeScript/src/rendering/materials.js" />
+      <root url="file://$PROJECT_DIR$/TestTypeScript/src/game/canvasCreator.js" />
+      <root url="file://$PROJECT_DIR$/TestTypeScript/src/decor/ObstaclesGenerator.js" />
+      <root url="file://$PROJECT_DIR$/TestTypeScript/src/game/GameObject.js" />
+      <root url="file://$PROJECT_DIR$/TestTypeScript/src/game/starParticles.js" />
+      <root url="file://$PROJECT_DIR$/TestTypeScript/src/decor/BasicObstacle.js" />
+      <root url="file://$PROJECT_DIR$/TestTypeScript/src/useless_app.js" />
+      <root url="file://$PROJECT_DIR$/TestTypeScript/src/UI/UI.js" />
+      <root url="file://$PROJECT_DIR$/TestTypeScript/src/game/Particles.js" />
+      <root url="file://$PROJECT_DIR$/TestTypeScript/src/player/Player.js" />
+      <root url="file://$PROJECT_DIR$/TestTypeScript/src/inputs/inputs.js" />
+      <root url="file://$PROJECT_DIR$/TestTypeScript/src/rendering/camera.js" />
+      <root url="file://$PROJECT_DIR$/TestTypeScript/src/decor/Helix.js" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>
