@@ -25,6 +25,7 @@ export class BasicObstacle extends g.GameObject{
         this.type = type;
 
         var obstacleMaterial = new BABYLON.StandardMaterial("prince material", scene);
+
         switch (this.type){
             case "OBSTACLE" :
                 obstacleMaterial.diffuseColor = new BABYLON.Color3(0,0,0);
@@ -40,7 +41,13 @@ export class BasicObstacle extends g.GameObject{
 
     update(deltaTime : number){
         super.update(deltaTime);
+        if(this.mesh.position.z <= 22)
+        {
+            var alertMaterial = new BABYLON.StandardMaterial("prince material", this.scene);
+            alertMaterial.diffuseColor = new BABYLON.Color3(1,0,0);
+            this.mesh.material = alertMaterial;
 
+        }
         this.mesh.position.z -= this.speed * deltaTime;
         switch (this.type){
             case "OBSTACLE" :

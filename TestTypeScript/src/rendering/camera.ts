@@ -6,8 +6,8 @@
 export var camera : BABYLON.FreeCamera;
 
 export function InitCamera(name : string, scene : BABYLON.Scene){
-    camera = new BABYLON.FreeCamera(name, new BABYLON.Vector3(0, 8, -10), scene);
-    //camera.rotation.y -= Math.PI;
+    camera = new BABYLON.FreeCamera(name, new BABYLON.Vector3(0, 8, 50), scene);
+    camera.rotation.y -= Math.PI;
 }
 export function CameraTest(canvas : HTMLCanvasElement){
     //camera.attachControl(canvas);
