@@ -19,6 +19,14 @@ export function GarbageObjects(){
     }
 }
 
+export function DestroyAll(){
+    var i : number;
+
+    for(i = 0; i < gameObjects.length; i++){
+        gameObjects[i].destroy();
+    }
+}
+
 export class GameObject{
     destroyed : boolean;
 
