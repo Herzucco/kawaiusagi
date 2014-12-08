@@ -86,7 +86,7 @@ export class UI {
         if(this.tween == false)
             this.context.globalAlpha = 1;
         this.context.font = ' 144px "sensation"';
-        this.context.fillText(this.title, (this.cWidht / 2) - 400, 200);
+        this.context.fillText(this.title, (this.cWidht / 2) - 420, 200);
         //drawClicktoplay
         if(this.tween == false)
             this.context.globalAlpha = this.alpha;
@@ -119,8 +119,12 @@ export class UI {
     }
     //draw the in game HUD
     InGameMenu() : void{
+        this.context.fillStyle = "#FFF000";
+        this.context.fillRect(0,0,this.cWidht,50);
+        this.context.shadowColor = this.basicColor;
+        this.context.fillStyle = this.basicColor;
         this.context.font = ' 40pt "sensation"';
-        this.context.fillText("Score : " + this.score.toString(), (this.cWidht / 2) - 120, 100);
+        this.context.fillText("Score : " + this.score.toString(), (this.cWidht / 2) - 120, 68);
         this.context.globalAlpha = 0.7;
         this.context.shadowColor = "#0033CC";
         this.context.fillStyle = "#0033CC";
