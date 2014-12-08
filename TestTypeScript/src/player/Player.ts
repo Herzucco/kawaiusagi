@@ -43,6 +43,11 @@ export class Player extends g.GameObject {
         if (obstacle.mesh.intersectsMesh(this.sphereMesh)) {
             obstacle.destroy();
             this.destroyPlayer();
+            (<HTMLAudioElement>document.getElementById("ingameTheme")).pause();
+            var deathSound = new Audio("sounds/deathSound.mp3"); // buffers automatically when create
+            deathSound.play();
+            (<HTMLAudioElement>document.getElementById("mainMenuSound")).load();
+            (<HTMLAudioElement>document.getElementById("mainMenuSound")).play();
         }
     }
 
@@ -51,6 +56,8 @@ export class Player extends g.GameObject {
             obstacle.destroy();
             var particle : ptcl.Particles = new ptcl.Particles(this.sphereMesh, this.scene); // On instancie le particle system
             ga.UI.score += 10;  // on incremente le score
+            var bonusSound = new Audio("sounds/collectibleSound.mp3"); // buffers automatically when create
+            bonusSound.play();
         }
     }
 
