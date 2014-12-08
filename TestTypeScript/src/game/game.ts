@@ -109,4 +109,5 @@ function generateMaterials(){
 export function Stop(){
     g.DestroyAll();
     og.stop();
+    UI.GameOver();
 }

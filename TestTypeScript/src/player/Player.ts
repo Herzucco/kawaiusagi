@@ -117,6 +117,7 @@ export class Player extends g.GameObject {
             obstacle.destroy();
             console.log("colision detectée!!!");
             this.destroyPlayer();
+
         }
         //}
 
@@ -137,7 +138,7 @@ export class Player extends g.GameObject {
      }*/
 
     destroyPlayer() {
-
+        ga.Stop();
         this.sphereMesh.dispose();
         console.log("player dead");
 
