@@ -120,8 +120,12 @@ export class UI {
     }
     //draw the in game HUD
     InGameMenu() : void{
+        this.context.fillStyle = "#FFFF00";
+        this.context.fillRect(0,0,this.cWidht,50);
+        this.context.shadowColor = this.basicColor;
+        this.context.fillStyle = this.basicColor;
         this.context.font = ' 40pt "sensation"';
-        this.context.fillText("Score : " + this.score.toString(), (this.cWidht / 2) - 150, 100);
+        this.context.fillText("Score : " + this.score.toString(), (this.cWidht / 2) - 150, 68);
         this.context.globalAlpha = 0.7;
         this.context.shadowColor = "#0033CC";
         this.context.fillStyle = "#0033CC";
