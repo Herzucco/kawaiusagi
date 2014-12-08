@@ -34,6 +34,7 @@ export class BasicObstacle extends g.GameObject {
     ratio : number;
     isJumping : boolean;
     isJumper : boolean;
+    isCollectible : boolean = false;
 
     constructor(x : number, y : number, z :number, ratio : number, color : string, player : p.Player, sphereMesh : BABYLON.Mesh, scene : BABYLON.Scene) {
         super();
@@ -60,6 +61,40 @@ export class BasicObstacle extends g.GameObject {
         mesh.material = m.GetMaterial(color+"_Obstacle");
         mesh.jumpAnimationVector = new BABYLON.Vector3(0, 0.5, 0);
 
+        this.checkJumper(mesh);
+        this.checkCollectible(mesh);
+
+        this.mesh = mesh;
+
+    }
+
+    endJump(){
+        this.isJumping = false;
+    }
+
+    update(deltaTime : number){
+        super.update(deltaTime);
+
+        this.mesh.setPositionWithLocalVector(this.mesh.jumpAnimationVector);
+        this.jump();
+
+        if(!this.isCollectible){
+            this.player.checkCollisionForMesh(this);
+        }else{
+            this.player.checkCollisionForCollectible(this);
+        }
+    }
+
+    jump(){
+        if(!this.isJumping && this.isJumper){
+            this.scene.beginAnimation(this.mesh, 0, 60, false, 1,
+                this.endJump.bind(this));
+
+            this.isJumping = true;
+        }
+    }
+
+    checkJumper(mesh : BABYLON.Mesh){
         if(Math.random()*10 > 7.5){
             var keys = [];
             keys.push({
@@ -82,30 +117,13 @@ export class BasicObstacle extends g.GameObject {
 
             this.isJumper = true;
         }
-
-        this.mesh = mesh;
-
     }
 
-    endJump(){
-        this.isJumping = false;
-    }
+    checkCollectible(mesh : BABYLON.Mesh){
+        if(Math.random()*10 > 9){
+            this.isCollectible = true;
 
-    update(deltaTime : number){
-        super.update(deltaTime);
-
-        this.mesh.setPositionWithLocalVector(this.mesh.jumpAnimationVector);
-        this.jump();
-        this.player.checkCollisionForMesh(this);
-    }
-
-    jump(){
-        if(!this.isJumping && this.isJumper){
-            this.scene.beginAnimation(this.mesh, 0, 60, false, 1,
-                this.endJump.bind(this));
-
-            this.isJumping = true;
+            mesh.material = m.GetMaterial("collectible");
         }
-
     }
 }

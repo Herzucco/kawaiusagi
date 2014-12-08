@@ -67,12 +67,15 @@ function update(deltaTime : number) {
 function generateMaterials(){
     var redMaterial = new BABYLON.StandardMaterial("red obstacle material", scene);
     var blueMaterial = new BABYLON.StandardMaterial("blue obstacle material", scene);
+    var collectibleMaterial = new BABYLON.StandardMaterial("collectible material", scene);
 
     redMaterial.diffuseColor = new BABYLON.Color3(1, 0, 0);
     blueMaterial.diffuseColor = new BABYLON.Color3(0, 0, 1);
+    collectibleMaterial.diffuseColor = new BABYLON.Color3(1, 1, 0);
 
     m.AddMaterial("RED_Obstacle", redMaterial);
     m.AddMaterial("BLUE_Obstacle", blueMaterial);
+    m.AddMaterial("collectible", collectibleMaterial);
 }
 
 function generateFx(){

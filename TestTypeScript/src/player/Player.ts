@@ -14,19 +14,6 @@ export class Player extends g.GameObject {
     public y:number;
     public z:number;
     public radius:number;
-    /*public characterNb : number;
-     public radius : number;
-     startRotationSpeed : number;
-     characterRadiusRatio : number;
-     rotationDir : number;
-     rotationSpeed : number;
-     public characterTable : Prince[];
-     invincibility : boolean;
-     invincibilityTime : number;
-     invincibilityFadingTime : number;
-     fadingTimer : number;
-     timer : number;
-     rotationSpeedRatio : number;*/
     scene:BABYLON.Scene;
     public sphereMesh:BABYLON.Mesh;
 
@@ -37,19 +24,6 @@ export class Player extends g.GameObject {
         this.y = y;
         this.z = z;
         this.radius = 0.05;
-        /*this.invincibilityTime = 3;
-         this.invincibilityFadingTime = 0.2;
-         this.rotationSpeedRatio = 10;
-         this.radius = 5;
-         this.rotationDir = 1; // 1 : sens anti-horaire, -1 : sens horaire
-         this.startRotationSpeed = 0.01;
-         this.rotationSpeed = this.startRotationSpeed;
-         this.characterRadiusRatio = 5;
-         this.characterNb = 7;
-         this.characterTable = [];
-         this.invincibility = false;
-         this.timer = 0;
-         this.fadingTimer = 0;*/
 
 
         // création du mesh Sphere //
@@ -57,85 +31,25 @@ export class Player extends g.GameObject {
         this.sphereMesh = BABYLON.Mesh.CreateSphere("PlayerSphere", 10, this.radius, scene);
         this.sphereMesh.position = new BABYLON.Vector3(this.x, this.y, this.z);
         this.scene = scene;
-        // this.sphereMesh.isVisible = false;
-
-        //this.createPrinces();
-
     }
 
 
     update(deltaTime:number) {
         super.update(deltaTime);
-        //this.checkCollisionForMesh();
-        /*this.rotateSphere();
-
-         if(this.invincibility == true)
-         {
-         this.invincibilityTimerCheck(deltaTime);
-         }
-
-         var i : number;
-         for(i = 0; i < this.characterTable.length; i++)
-         {
-         this.characterTable[i].mesh.setPositionWithLocalVector(this.characterTable[i].mesh.jumpAnimationVector);
-         }
-         if(inp.inputs["Z"]){
-
-         this.rotationDir *= -1;
-         }
-         if(inp.inputs["A"]){
-         for(i = 0; i < this.characterTable.length; i++)
-         {
-         if(this.characterTable[i].color == "BLUE" && this.characterTable[i].isJumping == false)
-         {
-
-         }
-         }
-         }
-         if(inp.inputs["E"]){
-         for(i = 0; i < this.characterTable.length; i++)
-         {
-         if(this.characterTable[i].color == "RED" && this.characterTable[i].isJumping == false)
-         {
-         this.scene.beginAnimation(this.characterTable[i].mesh, 0, 25, false, 1, this.characterTable[i].endJump.bind(this.characterTable[i]));
-         this.characterTable[i].isJumping = true;
-         }
-         }
-         }*/
     }
-
-    /*rotateSphere() {
-     this.sphereMesh.rotation.z += (this.rotationSpeed/this.characterNb*this.rotationSpeedRatio) * this.rotationDir;
-     }*/
 
     checkCollisionForMesh(obstacle:bo.BasicObstacle) {
-
-        /*var i : number;
-
-         for(i = 0; i < this.characterTable.length; i++) {*/
         if (obstacle.mesh.intersectsMesh(this.sphereMesh)) {
             obstacle.destroy();
-            console.log("colision detectée!!!");
             this.destroyPlayer();
-
         }
-        //}
-
     }
 
-    /* checkCollectibleCatch(obstacle : bo.BasicObstacle){
-     var i : number;
-     if(this.invincibility == false)
-     {
-     for(i = 0; i < this.characterTable.length; i++) {
-     if (obstacle.mesh.intersectsMesh(this.characterTable[i].mesh)) {
-     obstacle.destroy();
-     ga.UI.score += 1;
-
-     }
-     }
-     }
-     }*/
+    checkCollisionForCollectible(obstacle:bo.BasicObstacle) {
+        if (obstacle.mesh.intersectsMesh(this.sphereMesh)) {
+            ga.UI.score += 10;
+        }
+    }
 
     destroyPlayer() {
         ga.Stop();
@@ -144,131 +58,3 @@ export class Player extends g.GameObject {
 
     }
 }
-
-    /*createPrinces(){
-
-        // création des princes //
-        for(i=1; i<=this.characterNb; i++)  // On va répartir les princes équitablement autour de la sphere en fonction de leur nombre
-        {
-            var i : number;
-            var progress : number = i/this.characterNb;
-            var angle : number = progress * Math.PI * 2;
-            var posX : number = Math.sin(angle) * (this.radius/2 + (this.radius/this.characterRadiusRatio)*0.5) - this.x;
-            var posY : number = Math.cos(angle) * (this.radius/2 + (this.radius/this.characterRadiusRatio)*0.5) - this.y;
-            var posZ : number = 0;
-            var characterRatio = this.radius/this.characterRadiusRatio;
-            var color : string;
-            if(i%2 == 0)
-                color = "BLUE";
-            else
-                color = "RED";
-
-            var prince = new Prince(posX, posY, posZ, color, characterRatio, this.sphereMesh, this.scene);
-
-            this.characterTable.push(prince);
-        }
-    }
-
-    invincibilityTimerCheck(deltaTime : number){
-
-        if(this.timer > 0)
-        {
-            this.timer -= deltaTime/10;
-            this.fadingTimer += deltaTime/10;
-        }
-        else{
-            this.invincibility = false;
-            var i : number;
-            for(i = 0; i < this.characterTable.length; i++) {
-                this.characterTable[i].mesh.isVisible = true;
-            }
-
-        }
-        if(this.fadingTimer >= this.invincibilityFadingTime)
-        {
-            var i : number;
-            for(i = 0; i < this.characterTable.length; i++) {
-                this.characterTable[i].mesh.isVisible = !this.characterTable[i].mesh.isVisible;
-            }
-            this.fadingTimer = 0;
-        }
-
-    }*/
-
-
-//}
-
-/*class Prince {
-
-    x : number;
-    y : number;
-    z : number;
-    scene : BABYLON.Scene;
-    color : string;
-    sphereMesh : BABYLON.Mesh;
-    characterRatio : number;
-    mesh : BABYLON.Mesh;
-    isJumping : boolean;
-    public jumpHeight : number;
-
-    constructor(x : number, y : number, z :number, color : string, characterRatio : number, sphereMesh : BABYLON.Mesh, scene : BABYLON.Scene) {
-
-        this.x = x;
-        this.y = y;
-        this.z = z;
-        this.color = color;
-        this.sphereMesh = sphereMesh;
-        this.characterRatio = characterRatio;
-        this.isJumping = false;
-        this.jumpHeight = 6;
-
-       // var princeMesh : BABYLON.Mesh  = BABYLON.Mesh.CreateSphere("PrinceSphere", 10, this.characterRadius , scene);
-        var princeMesh : BABYLON.Mesh  = BABYLON.Mesh.CreateBox("box", this.characterRatio, scene);
-        princeMesh.rotation.z = (Math.atan2(this.y - this.sphereMesh.position.y, this.x - this.sphereMesh.position.x));
-        princeMesh.parent = this.sphereMesh;
-        princeMesh.position = new BABYLON.Vector3(this.x,this.y, this.z);
-
-        var princeMaterial = new BABYLON.StandardMaterial("prince material", scene);
-        switch (this.color){
-            case "BLUE" :
-                princeMaterial.diffuseColor = new BABYLON.Color3(0,0,1);
-                break;
-            case "RED" :
-                princeMaterial.diffuseColor = new BABYLON.Color3(1,0,0);
-                break;
-        }
-        princeMesh.material = princeMaterial;
-        princeMesh.jumpAnimationVector = new BABYLON.Vector3(0, 3, 0);
-
-        var animationBox = new BABYLON.Animation("anim", "jumpAnimationVector", 60, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);
-
-        var keys = [];
-        keys.push({
-            frame: 0,
-            value: new BABYLON.Vector3(0, 3, 0)
-        },{
-            frame: 10,
-            value: new BABYLON.Vector3(0, this.jumpHeight-1, 0)
-        },{
-            frame: 15,
-            value: new BABYLON.Vector3(0, this.jumpHeight, 0)
-        },{
-            frame: 25,
-            value: new BABYLON.Vector3(0, 3, 0)
-        });
-
-        animationBox.setKeys(keys);
-        princeMesh.animations.push(animationBox);
-
-        this.mesh = princeMesh;
-
-        this.mesh.actionManager = new BABYLON.ActionManager(scene);
-    }
-
-    endJump(){
-
-        this.isJumping = false;
-
-    }
-
-}*/
