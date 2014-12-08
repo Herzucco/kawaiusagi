@@ -8,6 +8,7 @@ import bo = require("../decor/BasicObstacle");
 import ga = require("../game/game");
 import he = require("../decor/Helix");
 import ptcl = require("../game/Particles");
+import dp = require("../game/deathParticles");
 
 export class Player extends g.GameObject {
 
@@ -43,6 +44,9 @@ export class Player extends g.GameObject {
         if (obstacle.mesh.intersectsMesh(this.sphereMesh)) {
             obstacle.destroy();
             this.destroyPlayer();
+            var deathparticle : dp.deathParticles = new dp.deathParticles(this.sphereMesh, this.scene);
+
+            // gestion sons //////////////////////////////////////
             (<HTMLAudioElement>document.getElementById("ingameTheme")).pause();
             var deathSound = new Audio("sounds/deathSound.mp3"); // buffers automatically when create
             deathSound.play();
