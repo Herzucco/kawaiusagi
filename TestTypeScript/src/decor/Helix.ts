@@ -14,7 +14,17 @@ import bo = require("../decor/BasicObstacle");
 import ga = require("../game/game");
 import p = require("../player/Player");
 
-
+/************************************************
+ * Helix Class
+ *
+ * @number : x - x absolute position
+ * @number : y - y absolute position
+ * @number : z - z absolute position
+ * @number : speed - moving speed of the helix
+ * @number : color - color of the obstacles meshes
+ * @number : player - reference to the player instance
+ * @number : scene - scene containing the helix
+ ************************************************/
 export class Helix extends g.GameObject{
     public x : number;
     public y : number;
@@ -75,7 +85,7 @@ export class Helix extends g.GameObject{
 
     }
 
-
+    //Update the position of the helix, and check the inputs to change rotation direction
     update(deltaTime : number){
         super.update(deltaTime);
 
@@ -95,10 +105,12 @@ export class Helix extends g.GameObject{
         }
     }
 
+    //Simply rotates the helix
     rotateSphere() {
         this.sphereMesh.rotation.z += (this.rotationSpeed/this.obstaclesNb*this.rotationSpeedRatio) * this.rotationDir;
     }
 
+    //Generate all the helix obstacles
     generate(){
         // création des pales //
         for(i=1; i<=this.obstaclesNb; i++)  // On va répartir les pales équitablement autour de la sphere en fonction de leur nombre
@@ -117,6 +129,7 @@ export class Helix extends g.GameObject{
         }
     }
 
+    //Destroy the helix
     destroy(){
         this.sphereMesh.dispose(false);
 

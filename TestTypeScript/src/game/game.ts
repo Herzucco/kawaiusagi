@@ -12,14 +12,16 @@ import og = require("../decor/ObstaclesGenerator");
 import u = require("../UI/UI");
 import ptcl = require("./Particles");
 import sp = require("./starParticles");
-
 import ms = u.MenuState;
+
+//The game manager, managing the game initialization and game over
 export var canvas : HTMLCanvasElement;
 export var scene : BABYLON.Scene;
 export var engine : BABYLON.Engine;
 export var UI : u.UI;
 export var layer : BABYLON.Layer;
 
+//Initialize the game - Only called one time
 export function Init(){
     canvas = c.CreateCanvas('scene', 1024, 768);
     scene = c.CreateBabylonScene(canvas, 1024, 768);
@@ -45,11 +47,13 @@ export function Init(){
     });
 }
 
+//Launching the game - called each time the player press space to relaunch the game
 export function Start(){
     var player = new p.Player(0,5,44.8,scene);
     og.launch(player);
 }
 
+//Main Loop, used to update all gameobjects and babylon rendering and data
 function update(deltaTime : number) {
     scene.render();
     UI.DrawUI();
@@ -64,6 +68,7 @@ function update(deltaTime : number) {
     og.update(deltaTime);
 }
 
+//Creating and saving all the needed materials - Called one time, at Init
 function generateMaterials(){
     var redMaterial = new BABYLON.StandardMaterial("red obstacle material", scene);
     var blueMaterial = new BABYLON.StandardMaterial("blue obstacle material", scene);
@@ -78,6 +83,7 @@ function generateMaterials(){
     m.AddMaterial("collectible", collectibleMaterial);
 }
 
+//Creating the fx - Called one time, at Init
 function generateFx(){
     // space particles generation /////////////////////
 
@@ -104,6 +110,7 @@ function generateFx(){
     };
 }
 
+//Stop the game when the player is destroyed
 export function Stop(){
     g.DestroyAll();
     og.stop();

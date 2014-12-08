@@ -16,10 +16,13 @@ var frequency : number;
 var time : number = 0;
 
 var isRunning : boolean = false;
+
+//Add helix obstacle to the scene
 export function generateObstacle(radius : number, scene : BABYLON.Scene, player : p.Player, color : string){
     var helix : h.Helix = new h.Helix(0, 0, spawnDistance, globalSpeed, color, player, scene);
 }
 
+//Initialize obstacleGenerator variables
 export function init(sd : number, gs : number, df : number, f : number, s : BABYLON.Scene){
     spawnDistance = sd;
     globalSpeed = gs;
@@ -28,16 +31,19 @@ export function init(sd : number, gs : number, df : number, f : number, s : BABY
     scene = s;
 }
 
+//Launch the generation
 export function launch(p : p.Player){
     player = p;
     isRunning = true;
 }
 
+//Stop the generation
 export function stop(){
     isRunning = false;
     time = 0;
 }
 
+//Each frame, checking if it has to generate an obstacle, and generate it if it has to
 export function update(deltaTime : number){
     if(isRunning){
         time += deltaTime/10;

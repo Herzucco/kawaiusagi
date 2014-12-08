@@ -2,6 +2,8 @@
  * Created by BreizhPanda on 21/11/2014.
  */
 ///<reference path="../../babylon.1.14.d.ts"/>
+
+//The inputs dictionary, used to check inputs holding in update loop
 export var inputs : Object = {
 
 };

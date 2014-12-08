@@ -52,11 +52,11 @@ export class UI {
             {
                 var validateSound = new Audio("sounds/validate_sound1.mp3"); // buffers automatically when create
                 validateSound.play();
-                document.getElementById("mainMenuSound").pause();
+                (<HTMLAudioElement>document.getElementById("mainMenuSound")).pause();
                 /*document.getElementById("validateSound").load();
                 document.getElementById("validateSound").play();*/
-                document.getElementById("ingameTheme").load();
-                document.getElementById("ingameTheme").play();
+                (<HTMLAudioElement>document.getElementById("ingameTheme")).load();
+                (<HTMLAudioElement>document.getElementById("ingameTheme")).play();
                 this.UIClick();
                 this.score = 0;
                 this.blockInput = true;
@@ -72,9 +72,9 @@ export class UI {
         {
             if(i.inputs["Space"] && this.blockInput == false)
             {
-                document.getElementById("ingameTheme").pause();
-                document.getElementById("mainMenuSound").load();
-                document.getElementById("mainMenuSound").play();
+                (<HTMLAudioElement>document.getElementById("ingameTheme")).pause();
+                (<HTMLAudioElement>document.getElementById("mainMenuSound")).load();
+                (<HTMLAudioElement>document.getElementById("mainMenuSound")).play();
                 this.GameOverClick();
                 this.blockInput = true;
             }
