@@ -72,9 +72,8 @@ export class UI {
         {
             if(i.inputs["Space"] && this.blockInput == false)
             {
-                (<HTMLAudioElement>document.getElementById("ingameTheme")).pause();
-                (<HTMLAudioElement>document.getElementById("mainMenuSound")).load();
-                (<HTMLAudioElement>document.getElementById("mainMenuSound")).play();
+                var validateSound2 = new Audio("sounds/validate_sound2.mp3"); // buffers automatically when create
+                validateSound2.play();
                 this.GameOverClick();
                 this.blockInput = true;
             }
