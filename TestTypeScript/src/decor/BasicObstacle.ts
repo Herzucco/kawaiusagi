@@ -124,7 +124,7 @@ export class BasicObstacle extends g.GameObject {
 
     //Check if the obstacle is a collectible one (yellow) or not
     checkCollectible(mesh : BABYLON.Mesh){
-        if(Math.random()*10 > 9){
+        if(Math.random()*10 > 7.5 && !this.isJumper){
             this.isCollectible = true;
 
             mesh.material = m.GetMaterial("collectible");
