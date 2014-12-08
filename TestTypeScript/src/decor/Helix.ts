@@ -67,7 +67,7 @@ export class Helix extends g.GameObject{
         this.z = z;
         this.rotationSpeedRatio = 10;
         this.radius = 5;
-        this.startRotationSpeed = 0.0002*speed;
+        this.startRotationSpeed = 0.01*speed;
         this.rotationSpeed = this.startRotationSpeed;
         this.obstacleRadiusRatio = 5;
         this.obstaclesNb = Math.floor(Math.random()*4)+2;
@@ -91,7 +91,7 @@ export class Helix extends g.GameObject{
 
         this.timer += deltaTime/10;
 
-        this.rotateSphere();
+        this.rotateSphere(deltaTime/10);
         this.sphereMesh.position.z += this.speed * (deltaTime/10);
 
         if(inp.inputs[this.input] && this.timer >= this.timeToReach){
@@ -106,8 +106,8 @@ export class Helix extends g.GameObject{
     }
 
     //Simply rotates the helix
-    rotateSphere() {
-        this.sphereMesh.rotation.z += (this.rotationSpeed/this.obstaclesNb*this.rotationSpeedRatio) * this.rotationDir;
+    rotateSphere(deltaTime : number) {
+        this.sphereMesh.rotation.z += (this.rotationSpeed/this.obstaclesNb*this.rotationSpeedRatio) * this.rotationDir * deltaTime;
     }
 
     //Generate all the helix obstacles
