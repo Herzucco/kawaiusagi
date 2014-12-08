@@ -50,6 +50,13 @@ export class UI {
             //you can click only on the main menu
             if(i.inputs["Space"] && this.blockInput == false)
             {
+                var validateSound = new Audio("sounds/validate_sound1.mp3"); // buffers automatically when create
+                validateSound.play();
+                document.getElementById("mainMenuSound").pause();
+                /*document.getElementById("validateSound").load();
+                document.getElementById("validateSound").play();*/
+                document.getElementById("ingameTheme").load();
+                document.getElementById("ingameTheme").play();
                 this.UIClick();
                 this.score = 0;
                 this.blockInput = true;
@@ -65,6 +72,9 @@ export class UI {
         {
             if(i.inputs["Space"] && this.blockInput == false)
             {
+                document.getElementById("ingameTheme").pause();
+                document.getElementById("mainMenuSound").load();
+                document.getElementById("mainMenuSound").play();
                 this.GameOverClick();
                 this.blockInput = true;
             }
