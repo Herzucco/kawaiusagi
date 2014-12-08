@@ -40,8 +40,6 @@ export function Init(){
     generateMaterials();
     generateFx();
 
-    og.init(-100, 30, 0.05, 5, scene);
-
     engine.runRenderLoop(function() {
         update(BABYLON.Tools.GetDeltaTime()/100);
     });
@@ -50,6 +48,7 @@ export function Init(){
 //Launching the game - called each time the player press space to relaunch the game
 export function Start(){
     var player = new p.Player(0,5,44.8,scene);
+    og.init(-100, 30, 0.05, 5, scene);
     og.launch(player);
 }
 
