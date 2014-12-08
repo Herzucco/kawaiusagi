@@ -48,7 +48,7 @@ export class Player extends g.GameObject {
 
     checkCollisionForCollectible(obstacle:bo.BasicObstacle) { // detection collision avec les collectibles
         if (obstacle.mesh.intersectsMesh(this.sphereMesh)) {
-
+            obstacle.destroy();
             var particle : ptcl.Particles = new ptcl.Particles(this.sphereMesh, this.scene); // On instancie le particle system
             ga.UI.score += 10;  // on incremente le score
         }
