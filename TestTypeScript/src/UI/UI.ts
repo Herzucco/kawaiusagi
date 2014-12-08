@@ -51,6 +51,7 @@ export class UI {
             if(i.inputs["Space"] && this.blockInput == false)
             {
                 this.UIClick();
+                this.score = 0;
                 this.blockInput = true;
                 g.Start();
             }
