@@ -40,7 +40,7 @@ export function Init(){
     generateMaterials();
     generateFx();
 
-    og.init(-100, 10, 0.01, 2, scene);
+    og.init(-100, 30, 0.05, 5, scene);
 
     engine.runRenderLoop(function() {
         update(BABYLON.Tools.GetDeltaTime()/100);
