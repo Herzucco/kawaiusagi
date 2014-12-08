@@ -72,6 +72,7 @@ export class BasicObstacle extends g.GameObject {
         this.isJumping = false;
     }
 
+    //Change position, jump if can jump, and check collision with the player
     update(deltaTime : number){
         super.update(deltaTime);
 
@@ -85,6 +86,7 @@ export class BasicObstacle extends g.GameObject {
         }
     }
 
+    //Launch the jump animation if can jump
     jump(){
         if(!this.isJumping && this.isJumper){
             this.scene.beginAnimation(this.mesh, 0, 60, false, 1,
@@ -94,6 +96,7 @@ export class BasicObstacle extends g.GameObject {
         }
     }
 
+    //Check if the obstacle can jump or not
     checkJumper(mesh : BABYLON.Mesh){
         if(Math.random()*10 > 7.5){
             var keys = [];
@@ -119,6 +122,7 @@ export class BasicObstacle extends g.GameObject {
         }
     }
 
+    //Check if the obstacle is a collectible one (yellow) or not
     checkCollectible(mesh : BABYLON.Mesh){
         if(Math.random()*10 > 9){
             this.isCollectible = true;

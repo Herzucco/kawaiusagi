@@ -6,7 +6,7 @@
 export var gameObjects : Array<GameObject>;
 gameObjects = new Array<GameObject>();
 
-
+//Called at each update to check destroyed gameobjects and remove them from memory
 export function GarbageObjects(){
     var i : number;
 
@@ -19,6 +19,7 @@ export function GarbageObjects(){
     }
 }
 
+//Destroying all the gameobjects
 export function DestroyAll(){
     var i : number;
 
@@ -27,6 +28,7 @@ export function DestroyAll(){
     }
 }
 
+//Main GameObject class, used to update each object of the game and easily manage their destruction
 export class GameObject{
     destroyed : boolean;
 
