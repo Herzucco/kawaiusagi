@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="040f5b4e-7ae6-4c4e-acc5-1e19a8624723" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TestTypeScript/src/UI/UI.ts" afterPath="$PROJECT_DIR$/TestTypeScript/src/UI/UI.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TestTypeScript/index.html" afterPath="$PROJECT_DIR$/TestTypeScript/index.html" />
-    </list>
+    <list default="true" id="040f5b4e-7ae6-4c4e-acc5-1e19a8624723" name="Default" comment="" />
     <ignored path="kawaiusagi.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -75,8 +72,8 @@
       <file leaf-file-name="Player.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TestTypeScript/src/player/Player.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1156">
-              <caret line="48" column="106" selection-start-line="48" selection-start-column="106" selection-end-line="48" selection-end-column="106" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="1156">
+              <caret line="49" column="60" selection-start-line="49" selection-start-column="60" selection-end-line="49" selection-end-column="60" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -855,8 +852,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TestTypeScript/src/player/Player.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1156">
-          <caret line="48" column="106" selection-start-line="48" selection-start-column="106" selection-end-line="48" selection-end-column="106" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="1156">
+          <caret line="49" column="60" selection-start-line="49" selection-start-column="60" selection-end-line="49" selection-end-column="60" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
