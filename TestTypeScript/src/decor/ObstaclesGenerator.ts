@@ -35,6 +35,7 @@ export function launch(p : p.Player){
 
 export function stop(){
     isRunning = false;
+    time = 0;
 }
 
 export function update(deltaTime : number){

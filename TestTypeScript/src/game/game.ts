@@ -36,10 +36,9 @@ export function Init(){
     mainLight.specular = new BABYLON.Color3(0, 0, 0);
 
     generateMaterials();
+    generateFx();
 
     og.init(-100, 10, 0.01, 2, scene);
-
-    Start();
 
     engine.runRenderLoop(function() {
         update(BABYLON.Tools.GetDeltaTime()/100);
@@ -48,7 +47,35 @@ export function Init(){
 
 export function Start(){
     var player = new p.Player(0,5,44.8,scene);
+    og.launch(player);
+}
 
+function update(deltaTime : number) {
+    scene.render();
+    UI.DrawUI();
+
+    var i : number;
+    g.GarbageObjects();
+
+    for(i = 0; i < g.gameObjects.length; i++){
+        g.gameObjects[i].update(deltaTime);
+    }
+
+    og.update(deltaTime);
+}
+
+function generateMaterials(){
+    var redMaterial = new BABYLON.StandardMaterial("red obstacle material", scene);
+    var blueMaterial = new BABYLON.StandardMaterial("blue obstacle material", scene);
+
+    redMaterial.diffuseColor = new BABYLON.Color3(1, 0, 0);
+    blueMaterial.diffuseColor = new BABYLON.Color3(0, 0, 1);
+
+    m.AddMaterial("RED_Obstacle", redMaterial);
+    m.AddMaterial("BLUE_Obstacle", blueMaterial);
+}
+
+function generateFx(){
     // space particles generation /////////////////////
 
     var starparticle : sp.starParticles = new sp.starParticles(50,50, scene);
@@ -72,38 +99,6 @@ export function Start(){
         effect.setFloat("glowIntensity", 2);
         effect.setFloat("highlightIntensity", 5.0);
     };
-
-    og.launch(player);
-    /////////////////////////////////////////////////////
-
-    //ex background
-    //layer = new BABYLON.Layer("background", "./images/skybox.png", scene,true);
-}
-
-function update(deltaTime : number) {
-    scene.render();
-    UI.DrawUI();
-
-    var i : number;
-    g.GarbageObjects();
-
-    for(i = 0; i < g.gameObjects.length; i++){
-        g.gameObjects[i].update(deltaTime);
-    }
-    if(UI.state == u.MenuState.IN_GAME) {
-        og.update(deltaTime);
-    }
-}
-
-function generateMaterials(){
-    var redMaterial = new BABYLON.StandardMaterial("red obstacle material", scene);
-    var blueMaterial = new BABYLON.StandardMaterial("blue obstacle material", scene);
-
-    redMaterial.diffuseColor = new BABYLON.Color3(1, 0, 0);
-    blueMaterial.diffuseColor = new BABYLON.Color3(0, 0, 1);
-
-    m.AddMaterial("RED_Obstacle", redMaterial);
-    m.AddMaterial("BLUE_Obstacle", blueMaterial);
 }
 
 export function Stop(){

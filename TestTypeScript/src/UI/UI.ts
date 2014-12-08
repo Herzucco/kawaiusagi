@@ -3,6 +3,7 @@
  */
 import c = require("../game/canvasCreator");
 import  i = require("../inputs/inputs");
+import  g = require("../game/game");
 export enum MenuState {
     START_MENU,
     IN_GAME,
@@ -51,6 +52,7 @@ export class UI {
             {
                 this.UIClick();
                 this.blockInput = true;
+                g.Start();
             }
             this.MainMenu();
         }
