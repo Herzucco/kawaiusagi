@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="040f5b4e-7ae6-4c4e-acc5-1e19a8624723" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TestTypeScript/src/game/Particles.ts" afterPath="$PROJECT_DIR$/TestTypeScript/src/game/Particles.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TestTypeScript/src/player/Player.ts" afterPath="$PROJECT_DIR$/TestTypeScript/src/player/Player.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TestTypeScript/src/game/game.ts" afterPath="$PROJECT_DIR$/TestTypeScript/src/game/game.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="kawaiusagi.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,8 +32,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TestTypeScript/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.6153846" vertical-offset="0" max-vertical-offset="391">
-              <caret line="4" column="28" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
+            <state vertical-scroll-proportion="-11.115385" vertical-offset="0" max-vertical-offset="391">
+              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -41,7 +42,7 @@
       <file leaf-file-name="ObstaclesGenerator.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TestTypeScript/src/decor/ObstaclesGenerator.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="1088">
+            <state vertical-scroll-proportion="0.0" vertical-offset="410" max-vertical-offset="1105">
               <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
@@ -53,33 +54,29 @@
       <file leaf-file-name="BasicObstacle.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TestTypeScript/src/decor/BasicObstacle.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1159" max-vertical-offset="1972">
-              <caret line="98" column="48" selection-start-line="98" selection-start-column="48" selection-end-line="98" selection-end-column="48" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1482" max-vertical-offset="2278">
+              <caret line="117" column="33" selection-start-line="117" selection-start-column="33" selection-end-line="117" selection-end-column="33" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
+                <marker date="1418054649471" expanded="true" signature="705:3769" placeholder="..." />
+                <marker date="1418054649471" expanded="true" signature="2302:3056" placeholder="{...}" />
+                <marker date="1418054649471" expanded="true" signature="2681:2731" placeholder="{&quot;frame&quot;: 60...}" />
+                <marker date="1418054649471" expanded="true" signature="3157:3192" placeholder="{...}" />
+                <marker date="1418054649471" expanded="true" signature="3287:3565" placeholder="{...}" />
+                <marker date="1418054649471" expanded="true" signature="3621:3761" placeholder="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Player.ts" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Player.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/TestTypeScript/src/player/Player.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4743">
-              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.6820144" vertical-offset="342" max-vertical-offset="1156">
+              <caret line="48" column="106" selection-start-line="48" selection-start-column="106" selection-end-line="48" selection-end-column="106" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.04" vertical-offset="0" max-vertical-offset="391">
-              <caret line="3" column="23" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -87,21 +84,31 @@
       <file leaf-file-name="starParticles.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TestTypeScript/src/game/starParticles.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="459" max-vertical-offset="1224">
+            <state vertical-scroll-proportion="0.0" vertical-offset="376" max-vertical-offset="1224">
               <caret line="11" column="78" selection-start-line="11" selection-start-column="78" selection-end-line="11" selection-end-column="78" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="game.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="game.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TestTypeScript/src/game/game.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.6613833" vertical-offset="734" max-vertical-offset="2006">
-              <caret line="111" column="18" selection-start-line="111" selection-start-column="18" selection-end-line="111" selection-end-column="18" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="867" max-vertical-offset="1972">
+              <caret line="83" column="77" selection-start-line="83" selection-start-column="77" selection-end-line="83" selection-end-column="77" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Particles.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TestTypeScript/src/game/Particles.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="19" max-vertical-offset="1122">
+              <caret line="27" column="41" selection-start-line="27" selection-start-column="41" selection-end-line="27" selection-end-column="41" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -143,6 +150,7 @@
         <option value="$PROJECT_DIR$/TestTypeScript/src/rendering/camera.ts" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/TestTypeScript/src/.gitignore" />
+        <option value="$PROJECT_DIR$/TestTypeScript/src/game/Particles.ts" />
         <option value="$PROJECT_DIR$/TestTypeScript/src/game/game.ts" />
         <option value="$PROJECT_DIR$/TestTypeScript/src/player/Player.ts" />
       </list>
@@ -181,6 +189,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -257,9 +266,74 @@
               <option name="myItemType" value="com.intellij.plugins.watcher.projectView.NestingTreeNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kawaiusagi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kawaiusagi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TestTypeScript" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rendering" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kawaiusagi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kawaiusagi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TestTypeScript" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="game" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kawaiusagi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kawaiusagi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TestTypeScript" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="decor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -288,15 +362,15 @@
     <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" working-dir="">
       <method />
     </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
+      <method />
+    </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
       <node-options />
       <gulpfile />
       <tasks />
       <pass-parent-env-vars>false</pass-parent-env-vars>
       <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
       <method />
     </configuration>
     <list size="0" />
@@ -324,19 +398,19 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17754011" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17967914" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19222222" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19111112" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -355,9 +429,9 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17540108" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19222222" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19222222" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -381,6 +455,24 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/TestTypeScript/src/game/game.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1921">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TestTypeScript/src/rendering/camera.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="323">
+          <caret line="8" column="70" selection-start-line="8" selection-start-column="70" selection-end-line="8" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/TestTypeScript/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="391">
@@ -405,6 +497,12 @@
           <caret line="98" column="48" selection-start-line="98" selection-start-column="48" selection-end-line="98" selection-end-column="48" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
+            <marker date="1418054649471" expanded="true" signature="705:3769" placeholder="..." />
+            <marker date="1418054649471" expanded="true" signature="2302:3056" placeholder="{...}" />
+            <marker date="1418054649471" expanded="true" signature="2681:2731" placeholder="{&quot;frame&quot;: 60...}" />
+            <marker date="1418054649471" expanded="true" signature="3157:3192" placeholder="{...}" />
+            <marker date="1418054649471" expanded="true" signature="3287:3565" placeholder="{...}" />
+            <marker date="1418054649471" expanded="true" signature="3621:3761" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -477,6 +575,12 @@
           <caret line="49" column="56" selection-start-line="49" selection-start-column="56" selection-end-line="49" selection-end-column="56" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
+            <marker date="1418054649471" expanded="true" signature="705:3769" placeholder="..." />
+            <marker date="1418054649471" expanded="true" signature="2302:3056" placeholder="{...}" />
+            <marker date="1418054649471" expanded="true" signature="2681:2731" placeholder="{&quot;frame&quot;: 60...}" />
+            <marker date="1418054649471" expanded="true" signature="3157:3192" placeholder="{...}" />
+            <marker date="1418054649471" expanded="true" signature="3287:3565" placeholder="{...}" />
+            <marker date="1418054649471" expanded="true" signature="3621:3761" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -506,7 +610,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="1071">
           <caret line="18" column="30" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -682,20 +786,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TestTypeScript/src/game/Particles.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1071">
-          <caret line="12" column="45" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TestTypeScript/src/UI/UI.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2907">
           <caret line="6" column="15" selection-start-line="6" selection-start-column="15" selection-end-line="6" selection-end-column="15" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -720,7 +816,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="694">
           <caret line="0" column="4" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -731,6 +826,14 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.22835821" vertical-offset="0" max-vertical-offset="670">
+          <caret line="9" column="5" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -752,44 +855,50 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TestTypeScript/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.6153846" vertical-offset="0" max-vertical-offset="391">
-          <caret line="4" column="28" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
+        <state vertical-scroll-proportion="-11.115385" vertical-offset="0" max-vertical-offset="391">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TestTypeScript/src/decor/BasicObstacle.ts">
+    <entry file="file://$PROJECT_DIR$/TestTypeScript/src/game/Particles.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1159" max-vertical-offset="1972">
-          <caret line="98" column="48" selection-start-line="98" selection-start-column="48" selection-end-line="98" selection-end-column="48" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TestTypeScript/src/player/Player.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4743">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.04" vertical-offset="0" max-vertical-offset="391">
-          <caret line="3" column="23" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="19" max-vertical-offset="1122">
+          <caret line="27" column="41" selection-start-line="27" selection-start-column="41" selection-end-line="27" selection-end-column="41" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/TestTypeScript/src/game/game.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.6613833" vertical-offset="734" max-vertical-offset="2006">
-          <caret line="111" column="18" selection-start-line="111" selection-start-column="18" selection-end-line="111" selection-end-column="18" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="867" max-vertical-offset="1972">
+          <caret line="83" column="77" selection-start-line="83" selection-start-column="77" selection-end-line="83" selection-end-column="77" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TestTypeScript/src/decor/BasicObstacle.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1482" max-vertical-offset="2278">
+          <caret line="117" column="33" selection-start-line="117" selection-start-column="33" selection-end-line="117" selection-end-column="33" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <marker date="1418054649471" expanded="true" signature="705:3769" placeholder="..." />
+            <marker date="1418054649471" expanded="true" signature="2302:3056" placeholder="{...}" />
+            <marker date="1418054649471" expanded="true" signature="2681:2731" placeholder="{&quot;frame&quot;: 60...}" />
+            <marker date="1418054649471" expanded="true" signature="3157:3192" placeholder="{...}" />
+            <marker date="1418054649471" expanded="true" signature="3287:3565" placeholder="{...}" />
+            <marker date="1418054649471" expanded="true" signature="3621:3761" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TestTypeScript/src/player/Player.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6820144" vertical-offset="342" max-vertical-offset="1156">
+          <caret line="48" column="106" selection-start-line="48" selection-start-column="106" selection-end-line="48" selection-end-column="106" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
